@@ -1,15 +1,14 @@
 import sys
 import psycopg2
 from PyQt5.uic import loadUi
-from PyQt5.QtWidgets import QDialog, QMainWindow, QApplication, QStackedWidget, QGridLayout, QFrame, QLabel, QWidget, QMessageBox
-from PyQt5.QtCore import QDate, Qt
-from PyQt5 import QtWidgets
+from PyQt5.QtWidgets import QDialog, QMainWindow, QApplication, QStackedWidget, QMessageBox
+from PyQt5.QtCore import QDate
+from PyQt5.QtGui import QIcon
 from ui_addscheduledialog import AddScheduleDialog
 from ui_addstaff import AddStaffDialog
 from ui_deletescheduledialog import DeleteSchedDialog
 from ui_deletestaffdialog import DeleteStaffDialog
 from ui_editscheduledialog import EditSchedDialog
-# from ui_login import Ui_Form
 from ui_newlogin import Ui_Form
 from ui_report import ReportWindow
 from ui_staff import StaffTab
@@ -19,11 +18,10 @@ from ui_staffdetail import Staff_Details
 from ui_updatestaff import UpdateStaffDialog
 from ui_viewschedule import View_Schedule
 
+
 # Database connection setup
 conn = psycopg2.connect(host='localhost', dbname='insurgent_db', user='postgres', password='admin', port='5432')
 cur = conn.cursor()
-
-
 
 class StaffScreen(QMainWindow):
     def __init__(self, stacked_widget):
@@ -64,9 +62,20 @@ class StaffScreen(QMainWindow):
         self.details.exec_()
         
     def logout(self):
-        logout = LoginScreen(self.stacked_widget)
-        self.stacked_widget.addWidget(logout)
-        self.stacked_widget.setCurrentWidget(logout)
+        # Display a confirmation dialog
+        reply = QMessageBox.question(
+            None,
+            'Logout',
+            "Are you sure you want to logout?",
+            QMessageBox.Yes | QMessageBox.No,
+            QMessageBox.No
+        )
+
+        if reply == QMessageBox.Yes:
+            # Navigate back to the login screen
+            logout_screen = LoginScreen(self.stacked_widget)
+            self.stacked_widget.addWidget(logout_screen)
+            self.stacked_widget.setCurrentWidget(logout_screen)
         
     
     def open_schedule(self):
@@ -266,6 +275,7 @@ class ScheduleScreen(QMainWindow):
             
         self.ui.calendarWidget.selectionChanged.connect(self.ui.printSelectedDate)
         self.ui.addschedbtn.clicked.connect(self.open_addsched)
+        self.ui.logoutbtn.clicked.connect(self.logout)
 
 
     def open_staff(self):
@@ -290,7 +300,22 @@ class ScheduleScreen(QMainWindow):
         addsched = AddScheduleScreen(self.stacked_widget, date)
         self.stacked_widget.addWidget(addsched)
         self.stacked_widget.setCurrentWidget(addsched)
-        
+
+    def logout(self):
+        # Display a confirmation dialog
+        reply = QMessageBox.question(
+            None,
+            'Logout',
+            "Are you sure you want to logout?",
+            QMessageBox.Yes | QMessageBox.No,
+            QMessageBox.No
+        )
+
+        if reply == QMessageBox.Yes:
+            # Navigate back to the login screen
+            logout_screen = LoginScreen(self.stacked_widget)
+            self.stacked_widget.addWidget(logout_screen)
+            self.stacked_widget.setCurrentWidget(logout_screen) 
         
 class ReportTab(QMainWindow):
     def __init__(self, stacked_widget):
@@ -305,6 +330,7 @@ class ReportTab(QMainWindow):
             self.ui.staffbtn.clicked.connect(self.open_staff)
         else:
             print("Error: 'staffbtn' not found in UI setup")
+        self.ui.logoutbtn.clicked.connect(self.logout)
             
     def open_staff(self):
         staff = StaffScreen(self.stacked_widget)
@@ -315,6 +341,22 @@ class ReportTab(QMainWindow):
         sched = ScheduleScreen(self.stacked_widget)
         self.stacked_widget.addWidget(sched)
         self.stacked_widget.setCurrentWidget(sched)
+    
+    def logout(self):
+        # Display a confirmation dialog
+        reply = QMessageBox.question(
+            None,
+            'Logout',
+            "Are you sure you want to logout?",
+            QMessageBox.Yes | QMessageBox.No,
+            QMessageBox.No
+        )
+
+        if reply == QMessageBox.Yes:
+            # Navigate back to the login screen
+            logout_screen = LoginScreen(self.stacked_widget)
+            self.stacked_widget.addWidget(logout_screen)
+            self.stacked_widget.setCurrentWidget(logout_screen) 
         
 class View_StafffSchedule(QDialog):
     def __init__(self, stacked_widget):
@@ -333,28 +375,23 @@ class View_StafffSchedule(QDialog):
 class LoginScreen(QDialog):
     def __init__(self, stacked_widget):
         super(LoginScreen, self).__init__()
-        self.ui = Ui_Form()  # Instantiate the UI class
-        self.ui.setupUi(self)  # Set up the UI
+        self.ui = Ui_Form()
+        self.ui.setupUi(self)
         self.stacked_widget = stacked_widget
         self.ui.viewschedbtn.clicked.connect(self.view_schedule)
         self.ui.btnLogin.clicked.connect(self.loginfunction)
-        
-        # Clear error label initially
         self.ui.error.setText('')
-        
-        # Set password field to echo mode
-        self.ui.inputPass.setEchoMode(QtWidgets.QLineEdit.Password)
 
     def loginfunction(self):
-        user = self.ui.inputEmail.text().strip()
+        username = self.ui.inputEmail.text().strip()
         password = self.ui.inputPass.text().strip()
 
-        if not user or not password:
+        if not username or not password:
             self.ui.error.setText('Input all fields')
             return
 
         try:
-            cur.execute("""SELECT password FROM users WHERE username = %s""", (user,))
+            cur.execute("""SELECT password FROM users WHERE username = %s""", (username,))
             result_pass = cur.fetchone()
         except Exception as e:
             self.ui.error.setText('Database error')
@@ -371,21 +408,22 @@ class LoginScreen(QDialog):
         self.stacked_widget.addWidget(view_sched)
         self.stacked_widget.setCurrentWidget(view_sched)
 
-    def open_schedule(self):
-        sched = ScheduleScreen(self.stacked_widget)  # Pass the stacked widget instance
-        self.stacked_widget.addWidget(sched)
-        self.stacked_widget.setCurrentWidget(sched)
-        
     def open_staff(self):
         staff = StaffScreen(self.stacked_widget)
         self.stacked_widget.addWidget(staff)
         self.stacked_widget.setCurrentWidget(staff)
-
 
 if __name__ == '__main__':
     app = QApplication(sys.argv)
     widget = QStackedWidget()
     login = LoginScreen(widget)
     widget.addWidget(login)
+    widget.setFixedSize(1600, 800)
     widget.show()
+    widget.setWindowTitle("Insurgents Employee Scheduling Management System")
+
+    icon = QIcon('image/Logo.ico')
+    widget.setWindowIcon(icon)
+
     sys.exit(app.exec_())
+

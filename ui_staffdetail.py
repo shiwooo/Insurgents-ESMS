@@ -1,13 +1,3 @@
-# -*- coding: utf-8 -*-
-
-################################################################################
-## Form generated from reading UI file 'staffdetailFCfQEb.ui'
-##
-## Created by: Qt User Interface Compiler version 5.14.1
-##
-## WARNING! All changes made in this file will be lost when recompiling UI file!
-################################################################################
-
 import datetime
 from PyQt5.QtCore import (QCoreApplication, QMetaObject, QObject, QPoint,
     QRect, QSize, QUrl, Qt)
@@ -26,30 +16,30 @@ class Staff_Details(object):
     
     def setupUi(self, Dialog):
         if Dialog.objectName():
-            Dialog.setObjectName(u"Dialog")
+            Dialog.setObjectName("Dialog")
         Dialog.resize(500, 700)
         self.horizontalLayout = QHBoxLayout(Dialog)
         self.horizontalLayout.setSpacing(0)
-        self.horizontalLayout.setObjectName(u"horizontalLayout")
+        self.horizontalLayout.setObjectName("horizontalLayout")
         self.horizontalLayout.setContentsMargins(0, 0, 0, 0)
         self.widget = QWidget(Dialog)
-        self.widget.setObjectName(u"widget")
+        self.widget.setObjectName("widget")
         self.widget.setEnabled(True)
         self.widget.setMinimumSize(QSize(500, 700))
         self.widget.setMaximumSize(QSize(500, 700))
-        self.widget.setStyleSheet(u"background-color: rgb(236, 230, 230);")
+        self.widget.setStyleSheet("background-color: rgb(236, 230, 230);")
         self.tableWidget = QTableWidget(self.widget)
-        self.tableWidget.setObjectName(u"tableWidget")
+        self.tableWidget.setObjectName("tableWidget")
         self.tableWidget.setGeometry(QRect(10, 220, 481, 471))
         self.label = QLabel(self.widget)
-        self.label.setObjectName(u"label")
+        self.label.setObjectName("label")
         self.label.setGeometry(QRect(130, 40, 251, 41))
         font = QFont()
         font.setPointSize(15)
         self.label.setFont(font)
         self.label.setAlignment(Qt.AlignCenter)
         self.name = QLabel(self.widget)
-        self.name.setObjectName(u"name")
+        self.name.setObjectName("name")
         self.name.setGeometry(QRect(10, 160, 200, 31))
         font1 = QFont()
         font1.setPointSize(10)
@@ -67,8 +57,8 @@ class Staff_Details(object):
     # setupUi
 
     def retranslateUi(self, Dialog):
-        Dialog.setWindowTitle(QCoreApplication.translate("Dialog", u"Dialog", None))
-        self.label.setText(QCoreApplication.translate("Dialog", u"Staff Schedule Details", None))
+        Dialog.setWindowTitle(QCoreApplication.translate("Dialog", "Dialog", None))
+        self.label.setText(QCoreApplication.translate("Dialog", "Staff Schedule Details", None))
         self.name.setText("")
     # retranslateUi
     

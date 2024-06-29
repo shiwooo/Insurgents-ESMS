@@ -1,15 +1,5 @@
-# -*- coding: utf-8 -*-
-
-################################################################################
-## Form generated from reading UI file 'schedule1mMSQze.ui'
-##
-## Created by: Qt User Interface Compiler version 5.14.1
-##
-## WARNING! All changes made in this file will be lost when recompiling UI file!
-################################################################################
-
 from PyQt5.QtCore import (QCoreApplication, QMetaObject, QObject, QPoint,
-    QRect, QSize, QUrl, Qt)
+    QRect, QSize, QUrl, Qt, QDate)
 from PyQt5.QtGui import (QBrush, QColor, QConicalGradient, QCursor, QFont,
     QFontDatabase, QIcon, QLinearGradient, QPalette, QPainter, QPixmap,
     QRadialGradient)
@@ -20,7 +10,7 @@ class ScheduleTab(object):
     def setupUi(self, MainWindow):
         if MainWindow.objectName():
             MainWindow.setObjectName(u"MainWindow")
-        MainWindow.resize(1497, 849)
+        MainWindow.resize(1600, 800)
         self.centralwidget = QWidget(MainWindow)
         self.centralwidget.setObjectName(u"centralwidget")
         self.horizontalLayout = QHBoxLayout(self.centralwidget)
@@ -31,78 +21,73 @@ class ScheduleTab(object):
         self.widget.setObjectName(u"widget")
         self.widget.setStyleSheet(u"background-color: rgb(40, 38, 38);")
         self.verticalLayout = QVBoxLayout(self.widget)
+        self.verticalLayout.setSpacing(0)
         self.verticalLayout.setObjectName(u"verticalLayout")
+        self.verticalLayout.setContentsMargins(0, 0, 0, 0)
         self.widget_3 = QWidget(self.widget)
         self.widget_3.setObjectName(u"widget_3")
         self.gridLayout = QGridLayout(self.widget_3)
         self.gridLayout.setObjectName(u"gridLayout")
-        self.pushButton = QPushButton(self.widget_3)
-        self.pushButton.setObjectName(u"pushButton")
-        self.pushButton.setStyleSheet(u"border: none;")
-        icon = QIcon()
-        icon.addFile(u"image/Logo1.png", QSize(), QIcon.Normal, QIcon.Off)
-        self.pushButton.setIcon(icon)
-        self.pushButton.setIconSize(QSize(200, 200))
+        self.logo = QLabel(self.widget_3)
+        self.logo.setObjectName(u"logo")
+        self.logo.setMaximumSize(QSize(200, 100))
+        self.logo.setPixmap(QPixmap(u"../Insurgents ESMS/image/Logo1.png"))
+        self.logo.setScaledContents(True)
 
-        self.gridLayout.addWidget(self.pushButton, 0, 0, 1, 1)
+        self.gridLayout.addWidget(self.logo, 0, 0, 1, 1)
 
 
         self.verticalLayout.addWidget(self.widget_3)
 
         self.widget_4 = QWidget(self.widget)
         self.widget_4.setObjectName(u"widget_4")
-        self.gridLayout_2 = QGridLayout(self.widget_4)
-        self.gridLayout_2.setObjectName(u"gridLayout_2")
+        self.widget_4.setEnabled(True)
+        sizePolicy = QSizePolicy(QSizePolicy.Minimum, QSizePolicy.Preferred)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.widget_4.sizePolicy().hasHeightForWidth())
+        self.widget_4.setSizePolicy(sizePolicy)
         self.schedbtn = QPushButton(self.widget_4)
-        self.schedbtn.setCursor(QCursor(Qt.PointingHandCursor))
         self.schedbtn.setObjectName(u"schedbtn")
-        self.schedbtn.setStyleSheet(u"#schedbtn{\n"
+        self.schedbtn.setGeometry(QRect(43, 81, 181, 32))
+        self.schedbtn.setStyleSheet(u"QPushButton{\n"
+"border: 1px solid white;\n"
+"border-radius: 5px;\n"
+"color: white;\n"
 "background-color: #B10303;\n"
-"border: 1px solid white;\n"
-"border-radius: 5px;\n"
-"margin: 0 40px;\n"
-"padding: 7px;\n"
-"color: white;\n"
+"}\n"
+"\n"
+"QPushButton:hover{\n"
+"	color: black;\n"
 "}")
-
-        self.gridLayout_2.addWidget(self.schedbtn, 1, 0, 1, 1)
-
         self.staffbtn = QPushButton(self.widget_4)
-        self.staffbtn.setCursor(QCursor(Qt.PointingHandCursor))
         self.staffbtn.setObjectName(u"staffbtn")
-        self.staffbtn.setStyleSheet(u"#staffbtn{\n"
+        self.staffbtn.setGeometry(QRect(43, 26, 181, 32))
+        self.staffbtn.setStyleSheet(u"QPushButton{\n"
 "border: 1px solid white;\n"
 "border-radius: 5px;\n"
-"margin: 0 40px;\n"
 "padding: 7px;\n"
 "color: white;\n"
 "}\n"
 "\n"
-"#staffbtn:hover{\n"
+"QPushButton:hover{\n"
 "	background-color: #B10303;\n"
 "	color: black;\n"
 "}")
-
-        self.gridLayout_2.addWidget(self.staffbtn, 0, 0, 1, 1)
-
         self.reportbtn = QPushButton(self.widget_4)
-        self.reportbtn.setCursor(QCursor(Qt.PointingHandCursor))
         self.reportbtn.setObjectName(u"reportbtn")
-        self.reportbtn.setStyleSheet(u"#reportbtn{\n"
+        self.reportbtn.setGeometry(QRect(43, 136, 181, 32))
+        self.reportbtn.setStyleSheet(u"QPushButton{\n"
 "border: 1px solid white;\n"
 "border-radius: 5px;\n"
-"margin: 0 40px;\n"
 "padding: 7px;\n"
 "color: white;\n"
 "}\n"
 "\n"
-"#reportbtn:hover{\n"
+"QPushButton:hover{\n"
 "	background-color: #B10303;\n"
 "	color: black;\n"
 "}")
-
-        self.gridLayout_2.addWidget(self.reportbtn, 2, 0, 1, 1)
-
 
         self.verticalLayout.addWidget(self.widget_4)
 
@@ -115,6 +100,20 @@ class ScheduleTab(object):
 
         self.widget_6 = QWidget(self.widget)
         self.widget_6.setObjectName(u"widget_6")
+        self.logoutbtn = QPushButton(self.widget_6)
+        self.logoutbtn.setObjectName(u"logoutbtn")
+        self.logoutbtn.setGeometry(QRect(68, 130, 131, 32))
+        self.logoutbtn.setStyleSheet(u"QPushButton{\n"
+"border: 1px solid white;\n"
+"border-radius: 5px;\n"
+"padding: 7px;\n"
+"color: white;\n"
+"}\n"
+"\n"
+"QPushButton:hover{\n"
+"	background-color: #B10303;\n"
+"	color: black;\n"
+"}")
 
         self.verticalLayout.addWidget(self.widget_6)
 
@@ -131,82 +130,29 @@ class ScheduleTab(object):
         self.widget_7 = QWidget(self.widget_2)
         self.widget_7.setObjectName(u"widget_7")
         self.widget_7.setStyleSheet(u"background-color: rgb(236, 230, 230);")
-        self.horizontalLayout_3 = QHBoxLayout(self.widget_7)
-        self.horizontalLayout_3.setObjectName(u"horizontalLayout_3")
-        self.widget_13 = QWidget(self.widget_7)
-        self.widget_13.setObjectName(u"widget_13")
-        self.horizontalLayout_4 = QHBoxLayout(self.widget_13)
-        self.horizontalLayout_4.setObjectName(u"horizontalLayout_4")
-        self.branchname = QWidget(self.widget_13)
-        self.branchname.setObjectName(u"branchname")
-
-        self.horizontalLayout_4.addWidget(self.branchname)
-
-
-        self.horizontalLayout_3.addWidget(self.widget_13)
-
-        self.widget_12 = QWidget(self.widget_7)
-        self.widget_12.setObjectName(u"widget_12")
-
-        self.horizontalLayout_3.addWidget(self.widget_12)
-
-        self.horizontalLayout_3.setStretch(0, 1)
-        self.horizontalLayout_3.setStretch(1, 2)
-
-        self.verticalLayout_2.addWidget(self.widget_7)
-
-        self.widget_9 = QWidget(self.widget_2)
-        self.widget_9.setObjectName(u"widget_9")
-        self.widget_9.setStyleSheet(u"background-color: rgb(236, 230, 230);")
-        self.horizontalLayout_2 = QHBoxLayout(self.widget_9)
-        self.horizontalLayout_2.setObjectName(u"horizontalLayout_2")
-        self.widget_10 = QWidget(self.widget_9)
-        self.widget_10.setObjectName(u"widget_10")
-
-        self.horizontalLayout_2.addWidget(self.widget_10)
-
-        self.widget_11 = QWidget(self.widget_9)
-        self.widget_11.setObjectName(u"widget_11")
-        self.gridLayout_4 = QGridLayout(self.widget_11)
-        self.gridLayout_4.setObjectName(u"gridLayout_4")
-        self.addschedbtn = QPushButton(self.widget_11)
-        self.addschedbtn.setCursor(QCursor(Qt.PointingHandCursor))
+        self.addschedbtn = QPushButton(self.widget_7)
         self.addschedbtn.setObjectName(u"addschedbtn")
-        self.addschedbtn.setStyleSheet(u"#addschedbtn{\n"
+        self.addschedbtn.setGeometry(QRect(1120, 50, 175, 40))
+        self.addschedbtn.setStyleSheet(u"QPushButton{\n"
 "border: 1px solid white;\n"
 "border-radius: 5px;\n"
-"margin: 0 5px;\n"
 "padding: 7px;\n"
 "background-color: #B10303;\n"
 "color: white;\n"
 "}\n"
 "\n"
-"#addschedbtn:hover{\n"
+"QPushButton:hover{\n"
 "	color: black;\n"
 "}")
 
-        self.gridLayout_4.addWidget(self.addschedbtn, 0, 0, 1, 1)
-
-
-        self.horizontalLayout_2.addWidget(self.widget_11)
-
-        self.horizontalLayout_2.setStretch(0, 9)
-        self.horizontalLayout_2.setStretch(1, 1)
-
-        self.verticalLayout_2.addWidget(self.widget_9)
+        self.verticalLayout_2.addWidget(self.widget_7)
 
         self.widget_8 = QWidget(self.widget_2)
         self.widget_8.setObjectName(u"widget_8")
         self.widget_8.setStyleSheet(u"background-color: rgb(236, 230, 230);")
-        self.gridLayout_5 = QGridLayout(self.widget_8)
-        self.gridLayout_5.setObjectName(u"gridLayout_5")
-        self.table = QWidget(self.widget_8)
-        self.table.setObjectName(u"table")
-        self.table.setStyleSheet(u"")
-        self.gridLayout_6 = QGridLayout(self.table)
-        self.gridLayout_6.setObjectName(u"gridLayout_6")
-        self.calendarWidget = QCalendarWidget(self.table)
+        self.calendarWidget = QCalendarWidget(self.widget_8)
         self.calendarWidget.setObjectName(u"calendarWidget")
+        self.calendarWidget.setGeometry(QRect(16, 16, 1301, 664))
         self.calendarWidget.setStyleSheet(u"/* Calendar Widget General */\n"
 "QCalendarWidget {\n"
 "    background-color: #ffffff;  /* Background color of the entire calendar widget */\n"
@@ -218,17 +164,17 @@ class ScheduleTab(object):
 "\n"
 "/* Navigation Bar */\n"
 "QCalendarWidget QToolButton {\n"
-"    height: 30px;  /* Height of the navigation buttons */\n"
+"    height: 50px;  /* Height of the navigation buttons */\n"
 "    width: 100px;  /* Width of the navigation buttons */\n"
 "    color: #ffffff;  /* Text color of the navigation buttons */\n"
-"    background-color: #4a90e2;  /* Background color of the navigation buttons */\n"
+"    background-color: #b10303;  /* Background color of the navigation buttons */\n"
 "    border: none;  /* Remove border of the navigation buttons */\n"
 "    margin: 10px;  /* Margin around the navigation buttons */\n"
 "}\n"
 "\n"
-"QCalendarWidget QToolButton::hover {\n"
-"    background-color: #357ab8;  /* Background color of the navigation buttons on hover"
-                        " */\n"
+"QCalendarWidget QToolButton:hover {\n"
+"    background-color: #870202;  /* Background color of the navigation buttons on hover "
+                        "*/\n"
 "}\n"
 "\n"
 "QCalendarWidget QToolButton#qt_calendar_prevmonth {\n"
@@ -243,7 +189,7 @@ class ScheduleTab(object):
 "QCalendarWidget QSpinBox {\n"
 "    width: 80px;  /* Width of the month/year selector */\n"
 "    color: #ffffff;  /* Text color of the month/year selector */\n"
-"    background-color: #4a90e2;  /* Background color of the month/year selector */\n"
+"    background-color: #b10303;  /* Background color of the month/year selector */\n"
 "    border: none;  /* Remove border of the month/year selector */\n"
 "}\n"
 "\n"
@@ -254,8 +200,8 @@ class ScheduleTab(object):
 "\n"
 "QCalendarWidget QSpinBox::down-button {\n"
 "    subcontrol-origin: border;  /* Origin of the down button control */\n"
-"    subcon"
-                        "trol-position: bottom right;  /* Position of the down button control */\n"
+"    subcont"
+                        "rol-position: bottom right;  /* Position of the down button control */\n"
 "}\n"
 "\n"
 "QCalendarWidget QSpinBox::up-arrow {\n"
@@ -274,7 +220,7 @@ class ScheduleTab(object):
 "}\n"
 "\n"
 "QCalendarWidget QTableView QHeaderView::section {\n"
-"    background-color: #4a90e2;  /* Background color of the weekdays header */\n"
+"    background-color: #b10303;  /* Background color of the weekdays header */\n"
 "    color: #ffffff;  /* Text color of the weekdays header */\n"
 "    padding: 5px;  /* Padding for the weekdays header */\n"
 "    border: none;  /* Remove border of the weekdays header */\n"
@@ -282,14 +228,14 @@ class ScheduleTab(object):
 "\n"
 "/* Days Section */\n"
 "QCalendarWidget QTableView::item {\n"
-"    background-color: #ffffff;  /* Background color of the day cells "
-                        "*/\n"
+"    background-color: #ffffff;  /* Background color of the day cells *"
+                        "/\n"
 "    color: #333333;  /* Text color of the day cells */\n"
 "    border: none;  /* Remove border of the day cells */\n"
 "}\n"
 "\n"
 "QCalendarWidget QTableView::item:selected {\n"
-"    background-color: #4a90e2;  /* Background color of the selected day cell */\n"
+"    background-color: #b10303;  /* Background color of the selected day cell */\n"
 "    color: #ffffff;  /* Text color of the selected day cell */\n"
 "}\n"
 "\n"
@@ -298,26 +244,20 @@ class ScheduleTab(object):
 "}\n"
 "\n"
 "QCalendarWidget QWidget#qt_calendar_navigationbar {\n"
-"    background-color: #4a90e2;  /* Background color of the navigation bar */\n"
+"    background-color: #b10303;  /* Background color of the navigation bar */\n"
 "}\n"
 "\n"
 "QCalendarWidget QTableView::item:hover {\n"
-"    background-color: #357ab8;  /* Background color of the day cells on hover */\n"
+"    background-color: #870202;  /* Background color of the day cells on hover */\n"
 "    color: #ffffff;  /* Text color of the day cells on hover */\n"
 "}\n"
 "")
-
-        self.gridLayout_6.addWidget(self.calendarWidget, 0, 0, 1, 1)
-
-
-        self.gridLayout_5.addWidget(self.table, 0, 0, 1, 1)
-
+        self.calendarWidget.setMinimumDate(QDate.currentDate())
 
         self.verticalLayout_2.addWidget(self.widget_8)
 
         self.verticalLayout_2.setStretch(0, 1)
-        self.verticalLayout_2.setStretch(1, 1)
-        self.verticalLayout_2.setStretch(2, 10)
+        self.verticalLayout_2.setStretch(1, 7)
 
         self.horizontalLayout.addWidget(self.widget_2)
 
@@ -328,18 +268,18 @@ class ScheduleTab(object):
         self.retranslateUi(MainWindow)
 
         QMetaObject.connectSlotsByName(MainWindow)
+
         self.printSelectedDate()
-        
-        
     # setupUi
 
     def retranslateUi(self, MainWindow):
         MainWindow.setWindowTitle(QCoreApplication.translate("MainWindow", u"MainWindow", None))
-        self.pushButton.setText("")
+        self.logo.setText("")
         self.schedbtn.setText(QCoreApplication.translate("MainWindow", u"Schedule", None))
         self.staffbtn.setText(QCoreApplication.translate("MainWindow", u"Staff", None))
         self.reportbtn.setText(QCoreApplication.translate("MainWindow", u"Report", None))
-        self.addschedbtn.setText(QCoreApplication.translate("MainWindow", u"Add Schedule", None))
+        self.logoutbtn.setText(QCoreApplication.translate("MainWindow", u"LOGOUT", None))
+        self.addschedbtn.setText(QCoreApplication.translate("MainWindow", u"Assign Schedule", None))
     # retranslateUi
     
     def printSelectedDate(self):

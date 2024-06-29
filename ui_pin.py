@@ -1,21 +1,7 @@
-# -*- coding: utf-8 -*-
-
-################################################################################
-## Form generated from reading UI file 'pinKykjbe.ui'
-##
-## Created by: Qt User Interface Compiler version 5.14.1
-##
-## WARNING! All changes made in this file will be lost when recompiling UI file!
-################################################################################
-
-from PyQt5.QtCore import (QCoreApplication, QMetaObject, QObject, QPoint,
-    QRect, QSize, QUrl, Qt, QRegularExpression)
-from PyQt5.QtGui import (QBrush, QColor, QConicalGradient, QCursor, QFont,
-    QFontDatabase, QIcon, QLinearGradient, QPalette, QPainter, QPixmap,
-    QRadialGradient, QRegularExpressionValidator)
+from PyQt5.QtCore import QCoreApplication, QMetaObject, QRect, Qt, QRegularExpression
+from PyQt5.QtGui import QCursor, QFont, QRegularExpressionValidator
 from PyQt5.QtWidgets import *
 import psycopg2
-
 
 class PIN_Dialog(object):
     def __init__(self, emp_id, dialog):
@@ -25,17 +11,17 @@ class PIN_Dialog(object):
     
     def setupUi(self, Dialog):
         if Dialog.objectName():
-            Dialog.setObjectName(u"Dialog")
+            Dialog.setObjectName("Dialog")
         Dialog.resize(347, 342)
         self.horizontalLayout = QHBoxLayout(Dialog)
         self.horizontalLayout.setSpacing(0)
-        self.horizontalLayout.setObjectName(u"horizontalLayout")
+        self.horizontalLayout.setObjectName("horizontalLayout")
         self.horizontalLayout.setContentsMargins(0, 0, 0, 0)
         self.widget = QWidget(Dialog)
-        self.widget.setObjectName(u"widget")
-        self.widget.setStyleSheet(u"background-color: rgb(236, 230, 230);")
+        self.widget.setObjectName("widget")
+        self.widget.setStyleSheet("background-color: rgb(236, 230, 230);")
         self.label = QLabel(self.widget)
-        self.label.setObjectName(u"label")
+        self.label.setObjectName("label")
         self.label.setGeometry(QRect(80, 60, 181, 31))
         font = QFont()
         font.setPointSize(15)
@@ -49,64 +35,53 @@ class PIN_Dialog(object):
         self.pininput.setObjectName("pininput")
         self.pininput.setMaxLength(4)
         self.pininput.setGeometry(QRect(40, 130, 261, 41))
-        self.pininput.setStyleSheet(u"background-color: rgb(255, 255, 255);\n"
-"border: 1px solid  #B10303;\n"
-"border-radius: 5px;\n"
-"padding: 4px;\n"
+        self.pininput.setStyleSheet("background-color: rgb(255, 255, 255);"
+"border: 1px solid  #B10303;"
+"border-radius: 5px;"
+"padding: 4px;"
 "")
         self.widget_2 = QWidget(self.widget)
-        self.widget_2.setObjectName(u"widget_2")
+        self.widget_2.setObjectName("widget_2")
         self.widget_2.setGeometry(QRect(50, 240, 241, 71))
         self.horizontalLayout_2 = QHBoxLayout(self.widget_2)
-        self.horizontalLayout_2.setObjectName(u"horizontalLayout_2")
+        self.horizontalLayout_2.setObjectName("horizontalLayout_2")
         self.cancelbtn = QPushButton(self.widget_2)
-        self.cancelbtn.setObjectName(u"cancelbtn")
+        self.cancelbtn.setObjectName("cancelbtn")
         self.cancelbtn.setCursor(QCursor(Qt.PointingHandCursor))
-        self.cancelbtn.setStyleSheet(u"background-color: rgb(236, 230, 230);\n"
-"color: #B10303;\n"
-"border: 1px solid #B10303;\n"
-"border-radius: 4px;\n"
+        self.cancelbtn.setStyleSheet("background-color: rgb(236, 230, 230);"
+"color: #B10303;"
+"border: 1px solid #B10303;"
+"border-radius: 4px;"
 "padding: 7px;")
-
         self.horizontalLayout_2.addWidget(self.cancelbtn)
-
         self.confirmbtn = QPushButton(self.widget_2)
-        self.confirmbtn.setObjectName(u"confirmbtn")
+        self.confirmbtn.setObjectName("confirmbtn")
         self.confirmbtn.setCursor(QCursor(Qt.PointingHandCursor))
-        self.confirmbtn.setStyleSheet(u"#confirmbtn{\n"
-"background-color: #B10303;\n"
-"border: 1px solid white;\n"
-"border-radius: 5px;\n"
-"padding: 7px;\n"
-"color: white;\n"
-"}\n"
-"\n"
-"#confirmbtn:hover{\n"
-"color:black;\n"
+        self.confirmbtn.setStyleSheet("#confirmbtn{"
+"background-color: #B10303;"
+"border: 1px solid white;"
+"border-radius: 5px;"
+"padding: 7px;"
+"color: white;"
+"}"
+""
+"#confirmbtn:hover{"
+"color:black;"
 "}")
-
         self.horizontalLayout_2.addWidget(self.confirmbtn)
-
-
         self.horizontalLayout.addWidget(self.widget)
-
-
         self.retranslateUi(Dialog)
-
         QMetaObject.connectSlotsByName(Dialog)
-        
         self.cancelbtn.clicked.connect(Dialog.reject)
         self.confirmbtn.clicked.connect(self.check_pin)
-        
         print(self.emp_id)
-        
     # setupUi
 
     def retranslateUi(self, Dialog):
-        Dialog.setWindowTitle(QCoreApplication.translate("Dialog", u"Dialog", None))
-        self.label.setText(QCoreApplication.translate("Dialog", u"Enter your PIN", None))
-        self.cancelbtn.setText(QCoreApplication.translate("Dialog", u"Cancel", None))
-        self.confirmbtn.setText(QCoreApplication.translate("Dialog", u"Confirm", None))
+        Dialog.setWindowTitle(QCoreApplication.translate("Dialog", "Dialog", None))
+        self.label.setText(QCoreApplication.translate("Dialog", "Enter your PIN", None))
+        self.cancelbtn.setText(QCoreApplication.translate("Dialog", "Cancel", None))
+        self.confirmbtn.setText(QCoreApplication.translate("Dialog", "Confirm", None))
     # retranslateUi
     
     def check_pin(self):
@@ -123,4 +98,3 @@ class PIN_Dialog(object):
         else:
             self.dialog.reject()  # PIN doesn't match, reject the dialog
     
-
