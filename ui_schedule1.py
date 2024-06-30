@@ -1,6 +1,7 @@
 from PyQt5.QtCore import QCoreApplication, QMetaObject, QRect, QSize, Qt, QDate
 from PyQt5.QtGui import QPixmap
 from PyQt5.QtWidgets import *
+import os
 
 class ScheduleTab(object):
     def setupUi(self, MainWindow):
@@ -27,7 +28,9 @@ class ScheduleTab(object):
         self.logo = QLabel(self.widget_3)
         self.logo.setObjectName(u"logo")
         self.logo.setMaximumSize(QSize(200, 100))
-        self.logo.setPixmap(QPixmap(u"../Insurgents ESMS/image/Logo1.png"))
+        script_dir = os.path.dirname(os.path.abspath(__file__))
+        image_path = os.path.join(script_dir, "image", "Logo1.png")
+        self.logo.setPixmap(QPixmap(image_path))
         self.logo.setScaledContents(True)
 
         self.gridLayout.addWidget(self.logo, 0, 0, 1, 1)

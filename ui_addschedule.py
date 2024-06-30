@@ -1,8 +1,7 @@
-import datetime
-import psycopg2
 from PyQt5.QtCore import QCoreApplication, QMetaObject, QSize, Qt, QRect
 from PyQt5.QtGui import QPixmap, QFont
 from PyQt5.QtWidgets import *
+import datetime, psycopg2, os
 
 class AddStaffSchedule(QMainWindow):
     def __init__(self, stacked_widget, date, previous_index):
@@ -37,7 +36,9 @@ class AddStaffSchedule(QMainWindow):
         self.logo = QLabel(self.widget_3)
         self.logo.setObjectName(u"logo")
         self.logo.setMaximumSize(QSize(200, 100))
-        self.logo.setPixmap(QPixmap(u"../Insurgents ESMS/image/Logo1.png"))
+        script_dir = os.path.dirname(os.path.abspath(__file__))
+        image_path = os.path.join(script_dir, "image", "Logo1.png")
+        self.logo.setPixmap(QPixmap(image_path))
         self.logo.setScaledContents(True)
 
         self.gridLayout.addWidget(self.logo, 0, 0, 1, 1)

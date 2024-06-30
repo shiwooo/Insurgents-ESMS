@@ -1,5 +1,3 @@
-import sys
-import psycopg2
 from PyQt5.QtWidgets import QDialog, QMainWindow, QApplication, QStackedWidget, QMessageBox
 from PyQt5.QtCore import QDate
 from PyQt5.QtGui import QIcon
@@ -16,7 +14,7 @@ from ui_addschedule import AddStaffSchedule
 from ui_staffdetail import Staff_Details
 from ui_updatestaff import UpdateStaffDialog
 from ui_viewschedule import View_Schedule
-
+import sys, psycopg2, os
 
 # Database connection setup
 conn = psycopg2.connect(host='localhost', dbname='insurgent_db', user='postgres', password='admin', port='5432')
@@ -421,7 +419,9 @@ if __name__ == '__main__':
     widget.show()
     widget.setWindowTitle("Insurgents Employee Scheduling Management System")
 
-    icon = QIcon('image/Logo.ico')
+    script_dir = os.path.dirname(os.path.abspath(__file__))
+    image_path = os.path.join(script_dir, "image", "Logo.ico")
+    icon = QIcon(image_path)
     widget.setWindowIcon(icon)
 
     sys.exit(app.exec_())

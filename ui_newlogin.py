@@ -1,6 +1,7 @@
 from PyQt5.QtCore import QCoreApplication, QMetaObject, QRect, Qt
 from PyQt5.QtGui import QCursor, QFont, QPixmap
 from PyQt5.QtWidgets import *
+import os
 
 class Ui_Form(object):
     def setupUi(self, Form):
@@ -27,7 +28,9 @@ class Ui_Form(object):
         self.label = QLabel(self.widget_3)
         self.label.setObjectName("label")
         self.label.setGeometry(QRect(100, 250, 600, 300))
-        self.label.setPixmap(QPixmap("../Insurgents ESMS/image/Logo1.png"))
+        script_dir = os.path.dirname(os.path.abspath(__file__))
+        image_path = os.path.join(script_dir, "image", "Logo1.png")
+        self.label.setPixmap(QPixmap(image_path))
         self.label.setScaledContents(True)
         self.horizontalLayout.addWidget(self.widget_3)
 

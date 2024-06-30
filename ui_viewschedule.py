@@ -1,8 +1,7 @@
-import datetime
 from PyQt5.QtCore import QCoreApplication, QMetaObject, QRect, QSize, Qt, QDate, QTimer
 from PyQt5.QtGui import QCursor, QFont, QPixmap
 from PyQt5.QtWidgets import *
-import psycopg2
+import datetime, psycopg2, os
 
 conn = psycopg2.connect(host='localhost', dbname='insurgent_db', user='postgres', password='admin', port='5432')
 cursor = conn.cursor()
@@ -37,7 +36,9 @@ class View_Schedule(QWidget):
         self.label_3 = QLabel(self.widget_4)
         self.label_3.setObjectName("label_3")
         self.label_3.setGeometry(QRect(100, 250, 600, 300))
-        self.label_3.setPixmap(QPixmap("../Insurgents ESMS/image/Logo1.png"))
+        script_dir = os.path.dirname(os.path.abspath(__file__))
+        image_path = os.path.join(script_dir, "image", "Logo1.png")
+        self.label_3.setPixmap(QPixmap(image_path))
         self.label_3.setScaledContents(True)
 
         self.horizontalLayout.addWidget(self.widget_4)
