@@ -1,7 +1,7 @@
 import datetime
 import psycopg2
-from PyQt5.QtCore import QCoreApplication, QMetaObject, QSize, Qt
-from PyQt5.QtGui import QCursor, QIcon
+from PyQt5.QtCore import QCoreApplication, QMetaObject, QSize, Qt, QRect
+from PyQt5.QtGui import QPixmap, QFont
 from PyQt5.QtWidgets import *
 
 class AddStaffSchedule(QMainWindow):
@@ -14,207 +14,254 @@ class AddStaffSchedule(QMainWindow):
 
     def setupUi(self, MainWindow):
         if MainWindow.objectName():
-            MainWindow.setObjectName("MainWindow")
-        MainWindow.resize(1497, 849)
+            MainWindow.setObjectName(u"MainWindow")
+        MainWindow.resize(1600, 800)
         self.centralwidget = QWidget(MainWindow)
-        self.centralwidget.setObjectName("centralwidget")
+        self.centralwidget.setObjectName(u"centralwidget")
         self.horizontalLayout = QHBoxLayout(self.centralwidget)
         self.horizontalLayout.setSpacing(0)
-        self.horizontalLayout.setObjectName("horizontalLayout")
+        self.horizontalLayout.setObjectName(u"horizontalLayout")
         self.horizontalLayout.setContentsMargins(0, 0, 0, 0)
         self.widget = QWidget(self.centralwidget)
-        self.widget.setObjectName("widget")
-        self.widget.setStyleSheet("background-color: rgb(40, 38, 38);")
+        self.widget.setObjectName(u"widget")
+        self.widget.setStyleSheet(u"background-color: rgb(40, 38, 38);")
         self.verticalLayout = QVBoxLayout(self.widget)
-        self.verticalLayout.setObjectName("verticalLayout")
+        self.verticalLayout.setSpacing(0)
+        self.verticalLayout.setObjectName(u"verticalLayout")
+        self.verticalLayout.setContentsMargins(0, 0, 0, 0)
         self.widget_3 = QWidget(self.widget)
-        self.widget_3.setObjectName("widget_3")
+        self.widget_3.setObjectName(u"widget_3")
         self.gridLayout = QGridLayout(self.widget_3)
-        self.gridLayout.setObjectName("gridLayout")
-        self.pushButton = QPushButton(self.widget_3)
-        self.pushButton.setObjectName("pushButton")
-        self.pushButton.setStyleSheet("border: none;")
-        icon = QIcon()
-        icon.addFile(":/image/Logo1.png", QSize(), QIcon.Normal, QIcon.Off)
-        self.pushButton.setIcon(icon)
-        self.pushButton.setIconSize(QSize(200, 200))
-        self.gridLayout.addWidget(self.pushButton, 0, 0, 1, 1)
+        self.gridLayout.setObjectName(u"gridLayout")
+        self.gridLayout.setContentsMargins(-1, 9, -1, -1)
+        self.logo = QLabel(self.widget_3)
+        self.logo.setObjectName(u"logo")
+        self.logo.setMaximumSize(QSize(200, 100))
+        self.logo.setPixmap(QPixmap(u"../Insurgents ESMS/image/Logo1.png"))
+        self.logo.setScaledContents(True)
+
+        self.gridLayout.addWidget(self.logo, 0, 0, 1, 1)
+
+
         self.verticalLayout.addWidget(self.widget_3)
+
         self.widget_4 = QWidget(self.widget)
-        self.widget_4.setObjectName("widget_4")
-        self.gridLayout_2 = QGridLayout(self.widget_4)
-        self.gridLayout_2.setObjectName("gridLayout_2")
-        self.backbtn = QPushButton(self.widget_4)
-        self.backbtn.setCursor(QCursor(Qt.PointingHandCursor))
-        self.backbtn.setObjectName("backbtn")
-        self.backbtn.setStyleSheet("#backbtn{"
-"border: 1px solid white;"
-"border-radius: 5px;"
-"margin: 0 40px;"
-"padding: 7px;"
-"color: white;"
-"background-color: #B10303;"
-"}"
-""
-"#backbtn:hover{"
-"	color: black;"
-"}")
-        self.gridLayout_2.addWidget(self.backbtn, 0, 0, 1, 1)
+        self.widget_4.setObjectName(u"widget_4")
+        self.widget_4.setStyleSheet(u"")
+
         self.verticalLayout.addWidget(self.widget_4)
+
         self.widget_5 = QWidget(self.widget)
-        self.widget_5.setObjectName("widget_5")
+        self.widget_5.setObjectName(u"widget_5")
         self.gridLayout_3 = QGridLayout(self.widget_5)
-        self.gridLayout_3.setObjectName("gridLayout_3")
+        self.gridLayout_3.setObjectName(u"gridLayout_3")
+
         self.verticalLayout.addWidget(self.widget_5)
-        self.widget_6 = QWidget(self.widget)
-        self.widget_6.setObjectName("widget_6")
-        self.verticalLayout.addWidget(self.widget_6)
+
+        self.widget_L2 = QWidget(self.widget)
+        self.widget_L2.setObjectName(u"widget_L2")
+        self.widget_L2.setStyleSheet(u"")
+        self.backbtn = QPushButton(self.widget_L2)
+        self.backbtn.setObjectName(u"backbtn")
+        self.backbtn.setGeometry(QRect(68, 130, 131, 32))
+        self.backbtn.setMaximumSize(QSize(2313123, 16777215))
+        self.backbtn.setStyleSheet("""
+    QPushButton {
+        border: 1px solid white;
+        border-radius: 5px;
+        color: white;
+        font-family: Arial;
+        font-weight: bold;
+        font-size: 14px;
+        background-color: transparent;
+        transition: background-color 0.3s ease, color 0.3s ease;
+    }
+    QPushButton:hover {
+        background-color: #B10303;
+        color: black;
+    }
+    QPushButton:pressed {
+        background-color: #7F0B0B;
+        border: 1px solid #7F0B0B;
+    }
+    QPushButton:focus {
+        outline: none;
+    }
+""")
+
+        self.verticalLayout.addWidget(self.widget_L2)
+
+
         self.horizontalLayout.addWidget(self.widget)
+
         self.widget_2 = QWidget(self.centralwidget)
-        self.widget_2.setObjectName("widget_2")
-        self.widget_2.setStyleSheet("background-color: rgb(236, 230, 230);")
+        self.widget_2.setObjectName(u"widget_2")
+        self.widget_2.setStyleSheet(u"background-color: rgb(236, 230, 230);")
         self.verticalLayout_2 = QVBoxLayout(self.widget_2)
         self.verticalLayout_2.setSpacing(0)
-        self.verticalLayout_2.setObjectName("verticalLayout_2")
+        self.verticalLayout_2.setObjectName(u"verticalLayout_2")
         self.verticalLayout_2.setContentsMargins(0, 0, 0, 0)
-        self.widget_7 = QWidget(self.widget_2)
-        self.widget_7.setObjectName("widget_7")
-        self.widget_7.setStyleSheet("background-color: rgb(236, 230, 230);")
-        self.horizontalLayout_3 = QHBoxLayout(self.widget_7)
-        self.horizontalLayout_3.setObjectName("horizontalLayout_3")
-        self.widget_13 = QWidget(self.widget_7)
-        self.widget_13.setObjectName("widget_13")
-        self.horizontalLayout_4 = QHBoxLayout(self.widget_13)
-        self.horizontalLayout_4.setObjectName("horizontalLayout_4")
-        self.branchname = QWidget(self.widget_13)
-        self.branchname.setObjectName("branchname")
-        self.horizontalLayout_4.addWidget(self.branchname)
-        self.horizontalLayout_3.addWidget(self.widget_13)
-        self.widget_12 = QWidget(self.widget_7)
-        self.widget_12.setObjectName("widget_12")
-        self.horizontalLayout_3.addWidget(self.widget_12)
-        self.horizontalLayout_3.setStretch(0, 1)
-        self.horizontalLayout_3.setStretch(1, 2)
-        self.verticalLayout_2.addWidget(self.widget_7)
         self.widget_9 = QWidget(self.widget_2)
-        self.widget_9.setObjectName("widget_9")
-        self.widget_9.setStyleSheet("background-color: rgb(236, 230, 230);")
-        self.horizontalLayout_2 = QHBoxLayout(self.widget_9)
-        self.horizontalLayout_2.setObjectName("horizontalLayout_2")
-        self.widget_10 = QWidget(self.widget_9)
-        self.widget_10.setObjectName("widget_10")
-        self.horizontalLayout_2.addWidget(self.widget_10)
-        self.widget_14 = QWidget(self.widget_9)
-        self.widget_14.setObjectName("widget_14")
-        self.horizontalLayout_5 = QHBoxLayout(self.widget_14)
-        self.horizontalLayout_5.setObjectName("horizontalLayout_5")
-        self.deletestaffbtn = QPushButton(self.widget_14)
-        self.deletestaffbtn.setCursor(QCursor(Qt.PointingHandCursor))
-        self.deletestaffbtn.setObjectName("deletestaffbtn")
-        self.deletestaffbtn.setStyleSheet("#deletestaffbtn{"
-"border: 1px solid white;"
-"border-radius: 5px;"
-"margin: 0 5px;"
-"padding: 7px;"
-"background-color: #B10303;"
-"color: white;"
-"}"
-""
-"#deletestaffbtn:hover{"
-"	color: black;"
-"}")
-        self.horizontalLayout_5.addWidget(self.deletestaffbtn)
-        self.horizontalLayout_2.addWidget(self.widget_14)
-        self.widget_15 = QWidget(self.widget_9)
-        self.widget_15.setObjectName("widget_15")
-        self.horizontalLayout_6 = QHBoxLayout(self.widget_15)
-        self.horizontalLayout_6.setObjectName("horizontalLayout_6")
-        self.updateschedbtn = QPushButton(self.widget_15)
-        self.updateschedbtn.setCursor(QCursor(Qt.PointingHandCursor))
-        self.updateschedbtn.setObjectName("updateschedbtn")
-        self.updateschedbtn.setStyleSheet("#updateschedbtn{"
-"border: 1px solid white;"
-"border-radius: 5px;"
-"margin: 0 5px;"
-"padding: 7px;"
-"background-color: #B10303;"
-"color: white;"
-"}"
-""
-"#updateschedbtn:hover{"
-"	color: black;"
-"}")
-        self.horizontalLayout_6.addWidget(self.updateschedbtn)
-        self.horizontalLayout_2.addWidget(self.widget_15)
-        self.widget_11 = QWidget(self.widget_9)
-        self.widget_11.setObjectName("widget_11")
-        self.gridLayout_4 = QGridLayout(self.widget_11)
-        self.gridLayout_4.setObjectName("gridLayout_4")
-        self.addstaffbtn = QPushButton(self.widget_11)
-        self.addstaffbtn.setCursor(QCursor(Qt.PointingHandCursor))
-        self.addstaffbtn.setObjectName("addstaffbtn")
-        self.addstaffbtn.setStyleSheet("#addstaffbtn{"
-"border: 1px solid white;"
-"border-radius: 5px;"
-"margin: 0 5px;"
-"padding: 7px;"
-"background-color: #B10303;"
-"color: white;"
-"}"
-""
-"#addstaffbtn:hover{"
-"	color: black;"
-"}")
+        self.widget_9.setObjectName(u"widget_9")
+        self.widget_9.setStyleSheet(u"background-color: rgb(236, 230, 230);")
+        self.addstaffbtn = QPushButton(self.widget_9)
+        self.addstaffbtn.setObjectName(u"addstaffbtn")
+        self.addstaffbtn.setGeometry(QRect(720, 44, 175, 40))
+        self.addstaffbtn.setStyleSheet("""
+    QPushButton {
+        border: 1px solid white;
+        border-radius: 5px;
+        background-color: #B10303;
+        color: white;
+        font-family: Arial;
+        font-weight: bold;
+        font-size: 14px;
+        padding: 10px;
+    }
+    QPushButton:hover {
+        background-color: #D11A1A;
+        color: black;
+    }
+    QPushButton:pressed {
+        background-color: #7F0B0B;
+        border: 1px solid #7F0B0B;
+    }
+    QPushButton:focus {
+        outline: none;
+    }
+""")
+        self.updateschedbtn = QPushButton(self.widget_9)
+        self.updateschedbtn.setObjectName(u"updateschedbtn")
+        self.updateschedbtn.setGeometry(QRect(920, 44, 175, 40))
+        self.updateschedbtn.setStyleSheet("""
+    QPushButton {
+        border: 1px solid white;
+        border-radius: 5px;
+        background-color: #B10303;
+        color: white;
+        font-family: Arial;
+        font-weight: bold;
+        font-size: 14px;
+        padding: 10px;
+    }
+    QPushButton:hover {
+        background-color: #D11A1A;
+        color: black;
+    }
+    QPushButton:pressed {
+        background-color: #7F0B0B;
+        border: 1px solid #7F0B0B;
+    }
+    QPushButton:focus {
+        outline: none;
+    }
+""")
+        self.deletestaffbtn = QPushButton(self.widget_9)
+        self.deletestaffbtn.setObjectName(u"deletestaffbtn")
+        self.deletestaffbtn.setGeometry(QRect(1120, 44, 175, 40))
+        self.deletestaffbtn.setStyleSheet("""
+    QPushButton {
+        border: 1px solid white;
+        border-radius: 5px;
+        background-color: #B10303;
+        color: white;
+        font-family: Arial;
+        font-weight: bold;
+        font-size: 14px;
+        padding: 10px;
+    }
+    QPushButton:hover {
+        background-color: #D11A1A;
+        color: black;
+    }
+    QPushButton:pressed {
+        background-color: #7F0B0B;
+        border: 1px solid #7F0B0B;
+    }
+    QPushButton:focus {
+        outline: none;
+    }
+""")
 
-        self.gridLayout_4.addWidget(self.addstaffbtn, 0, 0, 1, 1)
-        self.horizontalLayout_2.addWidget(self.widget_11)
-        self.horizontalLayout_2.setStretch(0, 6)
-        self.horizontalLayout_2.setStretch(1, 1)
-        self.horizontalLayout_2.setStretch(2, 1)
-        self.horizontalLayout_2.setStretch(3, 1)
         self.verticalLayout_2.addWidget(self.widget_9)
+
         self.widget_8 = QWidget(self.widget_2)
-        self.widget_8.setObjectName("widget_8")
-        self.widget_8.setStyleSheet("background-color: rgb(236, 230, 230);")
-        self.gridLayout_5 = QGridLayout(self.widget_8)
-        self.gridLayout_5.setObjectName("gridLayout_5")
-        self.table = QWidget(self.widget_8)
-        self.table.setObjectName("table")
-        self.table.setStyleSheet("")
-        self.gridLayout_6 = QGridLayout(self.table)
-        self.gridLayout_6.setObjectName("gridLayout_6")
-        self.tableWidget = QTableWidget(self.table)
-        self.tableWidget.setObjectName("tableWidget")
-        self.gridLayout_6.addWidget(self.tableWidget, 0, 0, 1, 1)
-        self.gridLayout_5.addWidget(self.table, 0, 0, 1, 1)
+        self.widget_8.setObjectName(u"widget_8")
+        self.widget_8.setStyleSheet(u"")
+        self.tableWidget = QTableWidget(self.widget_8)
+        self.tableWidget.setObjectName(u"tableWidget")
+        self.tableWidget.setGeometry(QRect(16, 16, 1301, 664))
+        
+        # Apply style to the table widget
+        self.tableWidget.setStyleSheet("""
+            QTableWidget {
+                border: 1px solid #B10303;
+                gridline-color: #B10303;
+                background-color: #f5f5f5;
+                font-family: Arial;
+                font-size: 14px;
+            }
+            QTableWidget::item {
+                border-right: 1px solid #B10303;
+                border-bottom: 1px solid #B10303;
+            }
+            QTableWidget::item:selected {
+                background-color: #B10303;
+                color: white;
+            }
+            QHeaderView::section {
+                background-color: #B10303;
+                color: white;
+                padding: 4px;
+                border: 1px solid #B10303;
+                font-size: 15px;
+                font-weight: bold;
+            }
+        """)
+        
+        header = self.tableWidget.horizontalHeader()
+        header.setFont(QFont("Arial", 12, QFont.Bold))
+        header.setStyleSheet("QHeaderView::section { background-color: #B10303; color: white; }")
+
         self.verticalLayout_2.addWidget(self.widget_8)
+
         self.verticalLayout_2.setStretch(0, 1)
-        self.verticalLayout_2.setStretch(1, 1)
-        self.verticalLayout_2.setStretch(2, 10)
+        self.verticalLayout_2.setStretch(1, 7)
+
         self.horizontalLayout.addWidget(self.widget_2)
+
         self.horizontalLayout.setStretch(0, 1)
         self.horizontalLayout.setStretch(1, 5)
         MainWindow.setCentralWidget(self.centralwidget)
+
         self.retranslateUi(MainWindow)
+
         QMetaObject.connectSlotsByName(MainWindow)
+
         self.backbtn.clicked.connect(self.go_back)
+
         self.load_data()
+
+        self.backbtn.setFocusPolicy(Qt.NoFocus)
+        self.addstaffbtn.setFocusPolicy(Qt.NoFocus)
+        self.updateschedbtn.setFocusPolicy(Qt.NoFocus)
+        self.deletestaffbtn.setFocusPolicy(Qt.NoFocus)
+        self.tableWidget.setFocusPolicy(Qt.NoFocus)
     # setupUi
 
     def retranslateUi(self, MainWindow):
-        MainWindow.setWindowTitle(QCoreApplication.translate("MainWindow", "MainWindow", None))
-        self.pushButton.setText("")
-        self.backbtn.setText(QCoreApplication.translate("MainWindow", "Back", None))
-        self.deletestaffbtn.setText(QCoreApplication.translate("MainWindow", "Delete", None))
-        self.updateschedbtn.setText(QCoreApplication.translate("MainWindow", "Update", None))
-        self.addstaffbtn.setText(QCoreApplication.translate("MainWindow", "Add", None))
+        MainWindow.setWindowTitle(QCoreApplication.translate("MainWindow", u"MainWindow", None))
+        self.logo.setText("")
+        self.backbtn.setText(QCoreApplication.translate("MainWindow", u"BACK", None))
+        self.addstaffbtn.setText(QCoreApplication.translate("MainWindow", u"Set Schedule", None))
+        self.updateschedbtn.setText(QCoreApplication.translate("MainWindow", u"Modify Schedule", None))
+        self.deletestaffbtn.setText(QCoreApplication.translate("MainWindow", u"Clear Schedule", None))
     # retranslateUi
 
     def go_back(self):
         self.stacked_widget.setCurrentIndex(self.previous_index)
     
     def load_data(self):
-        print(self.date)
         # Connect to the PostgreSQL database
         conn = psycopg2.connect(host='localhost', dbname='insurgent_db', user='postgres', password='admin', port='5432')
         cursor = conn.cursor()
@@ -247,9 +294,8 @@ class AddStaffSchedule(QMainWindow):
                 schedules.start_time
         """, (self.date,))
         rows = cursor.fetchall()
-        print(rows)
         self.tableWidget.setColumnCount(7)  # Set the number of columns including the hidden ID column
-        self.tableWidget.setHorizontalHeaderLabels(['ID', 'First Name', 'Last Name', 'Start Time', 'End Time', 'Status', 'Schedule ID'])
+        self.tableWidget.setHorizontalHeaderLabels(['ID', 'First Name', 'Last Name', 'Start Time', 'End Time', 'Schedule Category', 'Schedule ID'])
         self.tableWidget.setRowCount(len(rows))  # Set the number of rows
 
         for row_idx, row_data in enumerate(rows):

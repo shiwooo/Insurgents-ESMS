@@ -1,11 +1,7 @@
-from PyQt5.QtCore import (QCoreApplication, QMetaObject, QObject, QPoint,
-    QRect, QSize, QUrl, Qt, pyqtSignal, QRegExp, QRegularExpression)
-from PyQt5.QtGui import (QBrush, QColor, QConicalGradient, QCursor, QFont,
-    QFontDatabase, QIcon, QLinearGradient, QPalette, QPainter, QPixmap,
-    QRadialGradient, QRegExpValidator, QRegularExpressionValidator)
+from PyQt5.QtCore import QCoreApplication, QMetaObject, QObject, Qt, pyqtSignal, QRegExp, QRegularExpression, QSize
+from PyQt5.QtGui import QCursor, QFont, QRegExpValidator, QRegularExpressionValidator
 from PyQt5.QtWidgets import *
 import psycopg2
-
 
 class UpdateStaffDialog(QObject):
     staff_updated = pyqtSignal()

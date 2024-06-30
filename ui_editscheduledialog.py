@@ -1,11 +1,7 @@
-from PyQt5.QtCore import (QCoreApplication, QMetaObject, QObject, QPoint,
-    QRect, QSize, QUrl, Qt, pyqtSignal)
-from PyQt5.QtGui import (QBrush, QColor, QConicalGradient, QCursor, QFont,
-    QFontDatabase, QIcon, QLinearGradient, QPalette, QPainter, QPixmap,
-    QRadialGradient)
+from PyQt5.QtCore import QCoreApplication, QMetaObject, QObject, QRect, QSize, Qt, pyqtSignal
+from PyQt5.QtGui import QCursor, QFont
 from PyQt5.QtWidgets import *
 import psycopg2
-
 
 class EditSchedDialog(QObject):
     sched_update = pyqtSignal()    
@@ -120,7 +116,7 @@ class EditSchedDialog(QObject):
 "")
         self.label = QLabel(self.widget)
         self.label.setObjectName("label")
-        self.label.setGeometry(QRect(40, 50, 171, 30))
+        self.label.setGeometry(QRect(40, 50, 220, 30))
         font2 = QFont()
         font2.setPointSize(15)
         font2.setBold(True)
@@ -205,7 +201,7 @@ class EditSchedDialog(QObject):
         self.comboBox.setItemText(1, QCoreApplication.translate("Dialog", "Reserve", None))
         self.comboBox.setItemText(2, QCoreApplication.translate("Dialog", "Day off", None))
 
-        self.label.setText(QCoreApplication.translate("Dialog", "Edit Schedule", None))
+        self.label.setText(QCoreApplication.translate("Dialog", "Modify Schedule", None))
         self.namelabel.setText(QCoreApplication.translate("Dialog", "Name", None))
         self.tolabel.setText(QCoreApplication.translate("Dialog", "To", None))
         self.datlabel.setText(QCoreApplication.translate("Dialog", "Date", None))

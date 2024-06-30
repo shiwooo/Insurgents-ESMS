@@ -1,6 +1,5 @@
 import sys
 import psycopg2
-from PyQt5.uic import loadUi
 from PyQt5.QtWidgets import QDialog, QMainWindow, QApplication, QStackedWidget, QMessageBox
 from PyQt5.QtCore import QDate
 from PyQt5.QtGui import QIcon

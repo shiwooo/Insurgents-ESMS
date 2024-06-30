@@ -1,8 +1,5 @@
-from PyQt5.QtCore import (QCoreApplication, QMetaObject, QObject, QPoint,
-    QRect, QSize, QUrl, Qt, pyqtSignal)
-from PyQt5.QtGui import (QBrush, QColor, QConicalGradient, QCursor, QFont,
-    QFontDatabase, QIcon, QLinearGradient, QPalette, QPainter, QPixmap,
-    QRadialGradient)
+from PyQt5.QtCore import QCoreApplication, QMetaObject, QObject, QRect, QSize, Qt, pyqtSignal
+from PyQt5.QtGui import QCursor, QFont
 from PyQt5.QtWidgets import *
 import psycopg2
 
@@ -183,7 +180,7 @@ class AddScheduleDialog(QObject):
         self.comboBox.setItemText(1, QCoreApplication.translate("Dialog", "Reserve", None))
         self.comboBox.setItemText(2, QCoreApplication.translate("Dialog", "Day off", None))
 
-        self.label.setText(QCoreApplication.translate("Dialog", "Add Schedule", None))
+        self.label.setText(QCoreApplication.translate("Dialog", "Set Schedule", None))
         self.namelabel.setText(QCoreApplication.translate("Dialog", "Name", None))
         self.tolabel.setText(QCoreApplication.translate("Dialog", "To", None))
         self.datlabel.setText(QCoreApplication.translate("Dialog", "Date", None))
@@ -225,4 +222,4 @@ class AddScheduleDialog(QObject):
         except Exception as e:
             QMessageBox.critical(None, "Database Error", f"Error: {str(e)}")
         
-        
+    

@@ -1,16 +1,8 @@
-from PyQt5.QtCore import (QCoreApplication, QMetaObject, QObject, QPoint,
-    QRect, QSize, QUrl, Qt, QDate)
-from PyQt5.QtGui import (QBrush, QColor, QConicalGradient, QCursor, QFont,
-    QFontDatabase, QIcon, QLinearGradient, QPalette, QPainter, QPixmap,
-    QRadialGradient)
+from PyQt5.QtCore import QCoreApplication, QMetaObject, QRect, QSize, Qt
+from PyQt5.QtGui import QCursor, QPixmap
 from PyQt5.QtWidgets import *
 import psycopg2  # Import psycopg2 for PostgreSQL operations
 import datetime
-from PyQt5.uic import loadUi
-from ui_addstaff import AddStaffDialog
-from ui_deletestaffdialog import DeleteStaffDialog
-from ui_updatestaff import UpdateStaffDialog
-
 
 class StaffTab(object):
     def setupUi(self, MainWindow):
@@ -53,43 +45,86 @@ class StaffTab(object):
         self.staffbtn.setObjectName("staffbtn")
         self.staffbtn.setGeometry(QRect(43, 26, 181, 32))
         self.staffbtn.setCursor(QCursor(Qt.PointingHandCursor))
-        self.staffbtn.setStyleSheet("QPushButton{"
-"border: 1px solid white;"
-"border-radius: 5px;"
-"color: white;"
-"background-color: #B10303;"
-"}"
-""
-"QPushButton:hover{"
-"	color: black;"
-"}")
+        self.staffbtn.setStyleSheet("""
+    QPushButton {
+        border: 1px solid white;
+        border-radius: 5px;
+        background-color: #B10303;
+        color: white;
+        font-family: Arial;
+        font-weight: bold;
+        font-size: 14px;
+        transition: background-color 0.3s ease, color 0.3s ease;
+    }
+    QPushButton:hover {
+        background-color: #D11A1A;
+        color: black;
+    }
+    QPushButton:pressed {
+        background-color: #7F0B0B;
+        border: 1px solid #7F0B0B;
+    }
+    QPushButton:focus {
+        outline: none;
+    }
+""")
+
         self.schedbtn = QPushButton(self.widget_4)
         self.schedbtn.setObjectName("schedbtn")
         self.schedbtn.setGeometry(QRect(43, 81, 181, 32))
-        self.schedbtn.setStyleSheet("#schedbtn{"
-"border: 1px solid white;"
-"border-radius: 5px;"
-"color: white;"
-"}"
-""
-"#schedbtn:hover{"
-"	background-color: #B10303;"
-"	color: black;"
-"}")
+        self.schedbtn.setStyleSheet("""
+    QPushButton {
+        border: 1px solid white;
+        border-radius: 5px;
+        color: white;
+        font-family: Arial;
+        font-weight: bold;
+        font-size: 14px;
+        background-color: transparent;
+        transition: background-color 0.3s ease, color 0.3s ease;
+    }
+    QPushButton:hover {
+        background-color: #B10303;
+        color: black;
+    }
+    QPushButton:pressed {
+        background-color: #7F0B0B;
+        border: 1px solid #7F0B0B;
+    }
+    QPushButton:focus {
+        outline: none;
+    }
+""")
+
+
         self.reportbtn = QPushButton(self.widget_4)
         self.reportbtn.setObjectName("reportbtn")
         self.reportbtn.setGeometry(QRect(43, 136, 181, 32))
-        self.reportbtn.setStyleSheet("QPushButton{"
-"border: 1px solid white;"
-"border-radius: 5px;"
-"padding: 7px;"
-"color: white;"
-"}"
-""
-"QPushButton:hover{"
-"	background-color: #B10303;"
-"	color: black;"
-"}")
+        self.reportbtn.setStyleSheet("""
+    #reportbtn {
+        border: 1px solid white;
+        border-radius: 5px;
+        color: white;
+        font-family: Arial;
+        font-weight: bold;
+        font-size: 14px;
+        background-color: transparent;
+        transition: background-color 0.3s ease, color 0.3s ease;
+    }
+    #reportbtn:hover {
+        background-color: #B10303;
+        color: black;
+    }
+    #reportbtn:pressed {
+        background-color: #7F0B0B;
+        border: 1px solid #7F0B0B;
+    }
+    #reportbtn:focus {
+        outline: none;
+    }
+""")
+
+
 
         self.verticalLayout.addWidget(self.widget_4)
 
@@ -107,17 +142,29 @@ class StaffTab(object):
         self.logoutbtn.setObjectName("logoutbtn")
         self.logoutbtn.setGeometry(QRect(68, 130, 131, 32))
         self.logoutbtn.setMaximumSize(QSize(2313123, 16777215))
-        self.logoutbtn.setStyleSheet("#logoutbtn{"
-"border: 1px solid white;"
-"border-radius: 5px;"
-"padding: 7px;"
-"color: white;"
-"}"
-""
-"#logoutbtn:hover{"
-"	background-color: #B10303;"
-"	color: black;"
-"}")
+        self.logoutbtn.setStyleSheet("""
+    QPushButton {
+        border: 1px solid white;
+        border-radius: 5px;
+        color: white;
+        font-family: Arial;
+        font-weight: bold;
+        font-size: 14px;
+        background-color: transparent;
+        transition: background-color 0.3s ease, color 0.3s ease;
+    }
+    QPushButton:hover {
+        background-color: #B10303;
+        color: black;
+    }
+    QPushButton:pressed {
+        background-color: #7F0B0B;
+        border: 1px solid #7F0B0B;
+    }
+    QPushButton:focus {
+        outline: none;
+    }
+""")
 
         self.verticalLayout.addWidget(self.widget_L2)
 
@@ -137,44 +184,84 @@ class StaffTab(object):
         self.addstaffbtn = QPushButton(self.widget_9)
         self.addstaffbtn.setObjectName("addstaffbtn")
         self.addstaffbtn.setGeometry(QRect(720, 50, 175, 40))
-        self.addstaffbtn.setStyleSheet("QPushButton{"
-"border: 1px solid white;"
-"border-radius: 5px;"
-"background-color: #B10303;"
-"color: white;"
-"}"
-""
-"QPushButton:hover{"
-"	color: black;"
-"}")
+        self.addstaffbtn.setStyleSheet("""
+    QPushButton {
+        border: 1px solid white;
+        border-radius: 5px;
+        background-color: #B10303;
+        color: white;
+        font-family: Arial;
+        font-weight: bold;
+        font-size: 14px;
+        padding: 10px;
+    }
+    QPushButton:hover {
+        background-color: #D11A1A;
+        color: black;
+    }
+    QPushButton:pressed {
+        background-color: #7F0B0B;
+        border: 1px solid #7F0B0B;
+    }
+    QPushButton:focus {
+        outline: none;
+    }
+""")
+
         self.updatestaffbtn = QPushButton(self.widget_9)
         self.updatestaffbtn.setObjectName("updatestaffbtn")
         self.updatestaffbtn.setGeometry(QRect(920, 50, 175, 40))
-        self.updatestaffbtn.setStyleSheet("QPushButton{"
-"border: 1px solid white;"
-"border-radius: 5px;"
-"padding: 7px;"
-"background-color: #B10303;"
-"color: white;"
-"}"
-""
-"QPushButton:hover{"
-"	color: black;"
-"}")
+        self.updatestaffbtn.setStyleSheet("""
+    QPushButton {
+        border: 1px solid white;
+        border-radius: 5px;
+        background-color: #B10303;
+        color: white;
+        font-family: Arial;
+        font-weight: bold;
+        font-size: 14px;
+        padding: 10px;
+    }
+    QPushButton:hover {
+        background-color: #D11A1A;
+        color: black;
+    }
+    QPushButton:pressed {
+        background-color: #7F0B0B;
+        border: 1px solid #7F0B0B;
+    }
+    QPushButton:focus {
+        outline: none;
+    }
+""")
+
         self.deletestaffbtn = QPushButton(self.widget_9)
         self.deletestaffbtn.setObjectName("deletestaffbtn")
         self.deletestaffbtn.setGeometry(QRect(1120, 50, 175, 40))
-        self.deletestaffbtn.setStyleSheet("QPushButton{"
-"border: 1px solid white;"
-"border-radius: 5px;"
-"padding: 7px;"
-"background-color: #B10303;"
-"color: white;"
-"}"
-""
-"QPushButton:hover{"
-"	color: black;"
-"}")
+        self.deletestaffbtn.setStyleSheet("""
+    QPushButton {
+        border: 1px solid white;
+        border-radius: 5px;
+        background-color: #B10303;
+        color: white;
+        font-family: Arial;
+        font-weight: bold;
+        font-size: 14px;
+        padding: 10px;
+    }
+    QPushButton:hover {
+        background-color: #D11A1A;
+        color: black;
+    }
+    QPushButton:pressed {
+        background-color: #7F0B0B;
+        border: 1px solid #7F0B0B;
+    }
+    QPushButton:focus {
+        outline: none;
+    }
+""")
+
 
         self.verticalLayout_2.addWidget(self.widget_9)
 
@@ -184,6 +271,31 @@ class StaffTab(object):
         self.tableWidget = QTableWidget(self.widget_8)
         self.tableWidget.setObjectName("tableWidget")
         self.tableWidget.setGeometry(QRect(16, 16, 1301, 664))
+        self.tableWidget.setStyleSheet("""
+            QTableWidget {
+                border: 1px solid #B10303;
+                gridline-color: #B10303;
+                background-color: #f5f5f5;
+                font-family: Arial;
+                font-size: 14px;
+            }
+            QTableWidget::item {
+                border-right: 1px solid #B10303;
+                border-bottom: 1px solid #B10303;
+            }
+            QTableWidget::item:selected {
+                background-color: #B10303;
+                color: white;
+            }
+            QHeaderView::section {
+                background-color: #B10303;
+                color: white;
+                padding: 4px;
+                border: 1px solid #B10303;
+                font-size: 15px;
+                font-weight: bold;
+            }
+        """)
 
         self.verticalLayout_2.addWidget(self.widget_8)
 

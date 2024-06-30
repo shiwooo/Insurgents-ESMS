@@ -1,7 +1,7 @@
 import psycopg2
 from PyQt5.QtWidgets import *
-from PyQt5.QtCore import (QCoreApplication, QMetaObject, Qt, pyqtSignal, QRegExp, QRegularExpression, QDate)
-from PyQt5.QtGui import (QCursor, QFont, QRegExpValidator, QRegularExpressionValidator)
+from PyQt5.QtCore import QCoreApplication, QMetaObject, Qt, pyqtSignal, QRegExp, QRegularExpression, QDate
+from PyQt5.QtGui import QCursor, QFont, QRegExpValidator, QRegularExpressionValidator
 
 class AddStaffDialog(QDialog):
     staff_add = pyqtSignal()

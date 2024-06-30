@@ -1,11 +1,7 @@
-from PyQt5.QtCore import (QCoreApplication, QMetaObject, QObject, QPoint,
-    QRect, QSize, QUrl, Qt, pyqtSignal)
-from PyQt5.QtGui import (QBrush, QColor, QConicalGradient, QCursor, QFont,
-    QFontDatabase, QIcon, QLinearGradient, QPalette, QPainter, QPixmap,
-    QRadialGradient)
+from PyQt5.QtCore import QCoreApplication, QMetaObject, QObject, QRect,  Qt, pyqtSignal
+from PyQt5.QtGui import QCursor, QFont
 from PyQt5.QtWidgets import *
 import psycopg2
-
 
 class DeleteStaffDialog(QObject):
     staff_deleted = pyqtSignal()  # Signal defined as a class attribute

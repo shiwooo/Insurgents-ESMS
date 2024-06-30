@@ -1,9 +1,6 @@
 import datetime
-from PyQt5.QtCore import (QCoreApplication, QMetaObject, QObject, QPoint,
-    QRect, QSize, QUrl, Qt)
-from PyQt5.QtGui import (QBrush, QColor, QConicalGradient, QCursor, QFont,
-    QFontDatabase, QIcon, QLinearGradient, QPalette, QPainter, QPixmap,
-    QRadialGradient)
+from PyQt5.QtCore import QCoreApplication, QMetaObject, QRect, Qt, QSize
+from PyQt5.QtGui import QFont
 from PyQt5.QtWidgets import *
 import psycopg2
 

@@ -1,10 +1,6 @@
-from PyQt5.QtCore import (QCoreApplication, QMetaObject, QObject, QPoint,
-    QRect, QSize, QUrl, Qt, QDate)
-from PyQt5.QtGui import (QBrush, QColor, QConicalGradient, QCursor, QFont,
-    QFontDatabase, QIcon, QLinearGradient, QPalette, QPainter, QPixmap,
-    QRadialGradient)
+from PyQt5.QtCore import QCoreApplication, QMetaObject, QRect, QSize, Qt, QDate
+from PyQt5.QtGui import QPixmap
 from PyQt5.QtWidgets import *
-
 
 class ScheduleTab(object):
     def setupUi(self, MainWindow):
@@ -50,44 +46,83 @@ class ScheduleTab(object):
         self.schedbtn = QPushButton(self.widget_4)
         self.schedbtn.setObjectName(u"schedbtn")
         self.schedbtn.setGeometry(QRect(43, 81, 181, 32))
-        self.schedbtn.setStyleSheet(u"QPushButton{\n"
-"border: 1px solid white;\n"
-"border-radius: 5px;\n"
-"color: white;\n"
-"background-color: #B10303;\n"
-"}\n"
-"\n"
-"QPushButton:hover{\n"
-"	color: black;\n"
-"}")
+        self.schedbtn.setStyleSheet("""
+    QPushButton {
+        border: 1px solid white;
+        border-radius: 5px;
+        background-color: #B10303;
+        color: white;
+        font-family: Arial;
+        font-weight: bold;
+        font-size: 14px;
+        padding: 10px;
+        transition: background-color 0.3s ease, color 0.3s ease;
+    }
+    QPushButton:hover {
+        background-color: #D11A1A;
+        color: black;
+    }
+    QPushButton:pressed {
+        background-color: #7F0B0B;
+        border: 1px solid #7F0B0B;
+    }
+    QPushButton:focus {
+        outline: none;
+    }
+""")
+
         self.staffbtn = QPushButton(self.widget_4)
         self.staffbtn.setObjectName(u"staffbtn")
         self.staffbtn.setGeometry(QRect(43, 26, 181, 32))
-        self.staffbtn.setStyleSheet(u"QPushButton{\n"
-"border: 1px solid white;\n"
-"border-radius: 5px;\n"
-"padding: 7px;\n"
-"color: white;\n"
-"}\n"
-"\n"
-"QPushButton:hover{\n"
-"	background-color: #B10303;\n"
-"	color: black;\n"
-"}")
+        self.staffbtn.setStyleSheet("""
+    QPushButton {
+        border: 1px solid white;
+        border-radius: 5px;
+        color: white;
+        font-family: Arial;
+        font-weight: bold;
+        font-size: 14px;
+        background-color: transparent;
+        transition: background-color 0.3s ease, color 0.3s ease;
+    }
+    QPushButton:hover {
+        background-color: #B10303;
+        color: black;
+    }
+    QPushButton:pressed {
+        background-color: #7F0B0B;
+        border: 1px solid #7F0B0B;
+    }
+    QPushButton:focus {
+        outline: none;
+    }
+""")
         self.reportbtn = QPushButton(self.widget_4)
         self.reportbtn.setObjectName(u"reportbtn")
         self.reportbtn.setGeometry(QRect(43, 136, 181, 32))
-        self.reportbtn.setStyleSheet(u"QPushButton{\n"
-"border: 1px solid white;\n"
-"border-radius: 5px;\n"
-"padding: 7px;\n"
-"color: white;\n"
-"}\n"
-"\n"
-"QPushButton:hover{\n"
-"	background-color: #B10303;\n"
-"	color: black;\n"
-"}")
+        self.reportbtn.setStyleSheet("""
+    QPushButton {
+        border: 1px solid white;
+        border-radius: 5px;
+        color: white;
+        font-family: Arial;
+        font-weight: bold;
+        font-size: 14px;
+        background-color: transparent;
+        transition: background-color 0.3s ease, color 0.3s ease;
+    }
+    QPushButton:hover {
+        background-color: #B10303;
+        color: black;
+    }
+    QPushButton:pressed {
+        background-color: #7F0B0B;
+        border: 1px solid #7F0B0B;
+    }
+    QPushButton:focus {
+        outline: none;
+    }
+""")
 
         self.verticalLayout.addWidget(self.widget_4)
 
@@ -103,17 +138,29 @@ class ScheduleTab(object):
         self.logoutbtn = QPushButton(self.widget_6)
         self.logoutbtn.setObjectName(u"logoutbtn")
         self.logoutbtn.setGeometry(QRect(68, 130, 131, 32))
-        self.logoutbtn.setStyleSheet(u"QPushButton{\n"
-"border: 1px solid white;\n"
-"border-radius: 5px;\n"
-"padding: 7px;\n"
-"color: white;\n"
-"}\n"
-"\n"
-"QPushButton:hover{\n"
-"	background-color: #B10303;\n"
-"	color: black;\n"
-"}")
+        self.logoutbtn.setStyleSheet("""
+    QPushButton {
+        border: 1px solid white;
+        border-radius: 5px;
+        color: white;
+        font-family: Arial;
+        font-weight: bold;
+        font-size: 14px;
+        background-color: transparent;
+        transition: background-color 0.3s ease, color 0.3s ease;
+    }
+    QPushButton:hover {
+        background-color: #B10303;
+        color: black;
+    }
+    QPushButton:pressed {
+        background-color: #7F0B0B;
+        border: 1px solid #7F0B0B;
+    }
+    QPushButton:focus {
+        outline: none;
+    }
+""")
 
         self.verticalLayout.addWidget(self.widget_6)
 
@@ -133,17 +180,29 @@ class ScheduleTab(object):
         self.addschedbtn = QPushButton(self.widget_7)
         self.addschedbtn.setObjectName(u"addschedbtn")
         self.addschedbtn.setGeometry(QRect(1120, 50, 175, 40))
-        self.addschedbtn.setStyleSheet(u"QPushButton{\n"
-"border: 1px solid white;\n"
-"border-radius: 5px;\n"
-"padding: 7px;\n"
-"background-color: #B10303;\n"
-"color: white;\n"
-"}\n"
-"\n"
-"QPushButton:hover{\n"
-"	color: black;\n"
-"}")
+        self.addschedbtn.setStyleSheet("""
+    QPushButton {
+        border: 1px solid white;
+        border-radius: 5px;
+        background-color: #B10303;
+        color: white;
+        font-family: Arial;
+        font-weight: bold;
+        font-size: 14px;
+        padding: 10px;
+    }
+    QPushButton:hover {
+        background-color: #D11A1A;
+        color: black;
+    }
+    QPushButton:pressed {
+        background-color: #7F0B0B;
+        border: 1px solid #7F0B0B;
+    }
+    QPushButton:focus {
+        outline: none;
+    }
+""")
 
         self.verticalLayout_2.addWidget(self.widget_7)
 
@@ -279,11 +338,10 @@ class ScheduleTab(object):
         self.staffbtn.setText(QCoreApplication.translate("MainWindow", u"Staff", None))
         self.reportbtn.setText(QCoreApplication.translate("MainWindow", u"Report", None))
         self.logoutbtn.setText(QCoreApplication.translate("MainWindow", u"LOGOUT", None))
-        self.addschedbtn.setText(QCoreApplication.translate("MainWindow", u"Assign Schedule", None))
+        self.addschedbtn.setText(QCoreApplication.translate("MainWindow", u"Set Schedule", None))
     # retranslateUi
     
     def printSelectedDate(self):
         self.selected_date = self.calendarWidget.selectedDate().toString(Qt.ISODate)
-        print(f"Selected date: {self.selected_date}")
         return self.selected_date
 

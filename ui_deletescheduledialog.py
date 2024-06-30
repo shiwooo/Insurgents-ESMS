@@ -1,11 +1,7 @@
-from PyQt5.QtCore import (QCoreApplication, QMetaObject, QObject, QPoint,
-    QRect, QSize, QUrl, Qt, pyqtSignal)
-from PyQt5.QtGui import (QBrush, QColor, QConicalGradient, QCursor, QFont,
-    QFontDatabase, QIcon, QLinearGradient, QPalette, QPainter, QPixmap,
-    QRadialGradient)
+from PyQt5.QtCore import QCoreApplication, QMetaObject, QObject, QRect, QSize, Qt, pyqtSignal
+from PyQt5.QtGui import QFont, QCursor
 from PyQt5.QtWidgets import *
 import psycopg2
-
 
 class DeleteSchedDialog(QObject):
     delete_update = pyqtSignal()
@@ -126,7 +122,7 @@ class DeleteSchedDialog(QObject):
 
     def retranslateUi(self, Dialog):
         Dialog.setWindowTitle(QCoreApplication.translate("Dialog", "Dialog", None))
-        self.label.setText(QCoreApplication.translate("Dialog", "Are  you sure you want to delete this schedule?", None))
+        self.label.setText(QCoreApplication.translate("Dialog", "Are  you sure you want to clear this schedule?", None))
         self.sched_id.setText("")
         self.sched_id.hide()
         self.cancelbtn.setText(QCoreApplication.translate("Dialog", "Cancel", None))

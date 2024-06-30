@@ -1,9 +1,8 @@
 import datetime
 from PyQt5.QtCore import QCoreApplication, QMetaObject, QRect, QSize, Qt, QDate, QTimer
-from PyQt5.QtGui import QCursor, QFont
+from PyQt5.QtGui import QCursor, QFont, QPixmap
 from PyQt5.QtWidgets import *
 import psycopg2
-from PyQt5 import QtGui
 
 conn = psycopg2.connect(host='localhost', dbname='insurgent_db', user='postgres', password='admin', port='5432')
 cursor = conn.cursor()
@@ -38,7 +37,7 @@ class View_Schedule(QWidget):
         self.label_3 = QLabel(self.widget_4)
         self.label_3.setObjectName("label_3")
         self.label_3.setGeometry(QRect(100, 250, 600, 300))
-        self.label_3.setPixmap(QtGui.QPixmap(r"image\Logo1.png"))
+        self.label_3.setPixmap(QPixmap("../Insurgents ESMS/image/Logo1.png"))
         self.label_3.setScaledContents(True)
 
         self.horizontalLayout.addWidget(self.widget_4)
@@ -64,6 +63,31 @@ class View_Schedule(QWidget):
         self.tableWidget = QTableWidget(self.widget_3)
         self.tableWidget.setObjectName("tableWidget")
         self.tableWidget.setGeometry(QRect(0, 140, 700, 360))
+        self.tableWidget.setStyleSheet("""
+            QTableWidget {
+                border: 1px solid #B10303;
+                gridline-color: #B10303;
+                background-color: #f5f5f5;
+                font-family: Arial;
+                font-size: 14px;
+            }
+            QTableWidget::item {
+                border-right: 1px solid #B10303;
+                border-bottom: 1px solid #B10303;
+            }
+            QTableWidget::item:selected {
+                background-color: #B10303;
+                color: white;
+            }
+            QHeaderView::section {
+                background-color: #B10303;
+                color: white;
+                padding: 4px;
+                border: 1px solid #B10303;
+                font-size: 15px;
+                font-weight: bold;
+            }
+        """)
         self.label = QLabel(self.widget_3)
         self.label.setObjectName("label")
         self.label.setGeometry(QRect(50, 30, 90, 20))

@@ -44,49 +44,89 @@ class ReportWindow(object):
 
         self.widget_4 = QWidget(self.widget)
         self.widget_4.setObjectName(u"widget_4")
-        self.staffbtn = QPushButton(self.widget_4)
-        self.staffbtn.setObjectName(u"staffbtn")
-        self.staffbtn.setGeometry(QRect(43, 26, 181, 32))
-        self.staffbtn.setCursor(QCursor(Qt.PointingHandCursor))
-        self.staffbtn.setStyleSheet(u"QPushButton{\n"
-"border: 1px solid white;\n"
-"border-radius: 5px;\n"
-"padding: 7px;\n"
-"color: white;\n"
-"}\n"
-"\n"
-"QPushButton:hover{\n"
-"	background-color: #B10303;\n"
-"	color: black;\n"
-"}")
-        self.schedbtn = QPushButton(self.widget_4)
-        self.schedbtn.setObjectName(u"schedbtn")
-        self.schedbtn.setGeometry(QRect(43, 81, 181, 32))
-        self.schedbtn.setStyleSheet(u"QPushButton{\n"
-"border: 1px solid white;\n"
-"border-radius: 5px;\n"
-"padding: 7px;\n"
-"color: white;\n"
-"}\n"
-"\n"
-"QPushButton:hover{\n"
-"	background-color: #B10303;\n"
-"	color: black;\n"
-"}")
+
         self.reportbtn = QPushButton(self.widget_4)
         self.reportbtn.setObjectName(u"reportbtn")
         self.reportbtn.setGeometry(QRect(43, 136, 181, 32))
         self.reportbtn.setCursor(QCursor(Qt.PointingHandCursor))
-        self.reportbtn.setStyleSheet(u"QPushButton{\n"
-"border: 1px solid white;\n"
-"border-radius: 5px;\n"
-"color: white;\n"
-"background-color: #B10303;\n"
-"}\n"
-"\n"
-"QPushButton:hover{\n"
-"	color: black;\n"
-"}")
+        self.reportbtn.setStyleSheet("""
+    QPushButton {
+        border: 1px solid white;
+        border-radius: 5px;
+        background-color: #B10303;
+        color: white;
+        font-family: Arial;
+        font-weight: bold;
+        font-size: 14px;
+        transition: background-color 0.3s ease, color 0.3s ease;
+    }
+    QPushButton:hover {
+        background-color: #D11A1A;
+        color: black;
+    }
+    QPushButton:pressed {
+        background-color: #7F0B0B;
+        border: 1px solid #7F0B0B;
+    }
+    QPushButton:focus {
+        outline: none;
+    }
+""")
+        self.staffbtn = QPushButton(self.widget_4)
+        self.staffbtn.setObjectName(u"staffbtn")
+        self.staffbtn.setGeometry(QRect(43, 26, 181, 32))
+        self.staffbtn.setCursor(QCursor(Qt.PointingHandCursor))
+        self.staffbtn.setStyleSheet("""
+    QPushButton {
+        border: 1px solid white;
+        border-radius: 5px;
+        color: white;
+        font-family: Arial;
+        font-weight: bold;
+        font-size: 14px;
+        background-color: transparent;
+        transition: background-color 0.3s ease, color 0.3s ease;
+    }
+    QPushButton:hover {
+        background-color: #B10303;
+        color: black;
+    }
+    QPushButton:pressed {
+        background-color: #7F0B0B;
+        border: 1px solid #7F0B0B;
+    }
+    QPushButton:focus {
+        outline: none;
+    }
+""")
+        self.schedbtn = QPushButton(self.widget_4)
+        self.schedbtn.setObjectName(u"schedbtn")
+        self.schedbtn.setGeometry(QRect(43, 81, 181, 32))
+        self.schedbtn.setStyleSheet("""
+    QPushButton {
+        border: 1px solid white;
+        border-radius: 5px;
+        color: white;
+        font-family: Arial;
+        font-weight: bold;
+        font-size: 14px;
+        background-color: transparent;
+        transition: background-color 0.3s ease, color 0.3s ease;
+    }
+    QPushButton:hover {
+        background-color: #B10303;
+        color: black;
+    }
+    QPushButton:pressed {
+        background-color: #7F0B0B;
+        border: 1px solid #7F0B0B;
+    }
+    QPushButton:focus {
+        outline: none;
+    }
+""")
+        
+
 
         self.verticalLayout.addWidget(self.widget_4)
 
@@ -102,17 +142,29 @@ class ReportWindow(object):
         self.logoutbtn = QPushButton(self.widget_6)
         self.logoutbtn.setObjectName(u"logoutbtn")
         self.logoutbtn.setGeometry(QRect(68, 130, 131, 32))
-        self.logoutbtn.setStyleSheet(u"QPushButton{\n"
-"border: 1px solid white;\n"
-"border-radius: 5px;\n"
-"padding: 7px;\n"
-"color: white;\n"
-"}\n"
-"\n"
-"QPushButton:hover{\n"
-"	background-color: #B10303;\n"
-"	color: black;\n"
-"}")
+        self.logoutbtn.setStyleSheet("""
+    QPushButton {
+        border: 1px solid white;
+        border-radius: 5px;
+        color: white;
+        font-family: Arial;
+        font-weight: bold;
+        font-size: 14px;
+        background-color: transparent;
+        transition: background-color 0.3s ease, color 0.3s ease;
+    }
+    QPushButton:hover {
+        background-color: #B10303;
+        color: black;
+    }
+    QPushButton:pressed {
+        background-color: #7F0B0B;
+        border: 1px solid #7F0B0B;
+    }
+    QPushButton:focus {
+        outline: none;
+    }
+""")
 
         self.verticalLayout.addWidget(self.widget_6)
 
@@ -141,21 +193,72 @@ class ReportWindow(object):
         self.searchinput.setObjectName(u"searchinput")
         self.searchinput.setGeometry(QRect(815, 150, 300, 40))
         self.searchinput.setPlaceholderText("Search Name")
-        self.searchinput.setStyleSheet(u"background-color: rgb(255, 255, 255);\n"
-"border: 1px solid  #B10303;\n"
-"border-radius: 5px;")
+        self.searchinput.setStyleSheet("""
+    QLineEdit {
+        background-color: #ffffff;
+        border: 1px solid #B10303;
+        border-radius: 5px;
+        padding: 8px;
+        font-family: Arial;
+        font-size: 14px;
+        color: #000000;
+    }
+    QLineEdit:hover {
+        border: 1px solid #D11A1A;
+    }
+    QLineEdit:focus {
+        border: 1px solid #7F0B0B;
+        background-color: #F5F5F5;
+        outline: none;
+    }
+""")
+
         self.overtimerate = QLineEdit(self.widget_9)
         self.overtimerate.setObjectName(u"overtimerate")
         self.overtimerate.setGeometry(QRect(500, 184, 80, 40))
-        self.overtimerate.setStyleSheet(u"background-color: rgb(255, 255, 255);\n"
-"border: 1px solid  #B10303;\n"
-"border-radius: 5px;")
+        self.overtimerate.setStyleSheet("""
+    QLineEdit {
+        background-color: #ffffff;
+        border: 1px solid #B10303;
+        border-radius: 5px;
+        padding: 8px;
+        font-family: Arial;
+        font-size: 14px;
+        color: #000000;
+    }
+    QLineEdit:hover {
+        border: 1px solid #D11A1A;
+    }
+    QLineEdit:focus {
+        border: 1px solid #7F0B0B;
+        background-color: #F5F5F5;
+        outline: none;
+    }
+""")
+
         self.regularrate = QLineEdit(self.widget_9)
         self.regularrate.setObjectName(u"regularrate")
         self.regularrate.setGeometry(QRect(500, 120, 80, 40))
-        self.regularrate.setStyleSheet(u"background-color: rgb(255, 255, 255);\n"
-"border: 1px solid  #B10303;\n"
-"border-radius: 5px;")
+        self.regularrate.setStyleSheet("""
+    QLineEdit {
+        background-color: #ffffff;
+        border: 1px solid #B10303;
+        border-radius: 5px;
+        padding: 8px;
+        font-family: Arial;
+        font-size: 14px;
+        color: #000000;
+    }
+    QLineEdit:hover {
+        border: 1px solid #D11A1A;
+    }
+    QLineEdit:focus {
+        border: 1px solid #7F0B0B;
+        background-color: #F5F5F5;
+        outline: none;
+    }
+""")
+
         
         # Validator to accept only floating-point or integer input
         double_validator = QDoubleValidator()
@@ -203,18 +306,29 @@ class ReportWindow(object):
         self.searchbtn = QPushButton(self.widget_9)
         self.searchbtn.setObjectName(u"searchbtn")
         self.searchbtn.setGeometry(QRect(1124, 150, 131, 40))
-        self.searchbtn.setStyleSheet(u"QPushButton{\n"
-"border: 1px solid white;\n"
-"border-radius: 5px;\n"
-"padding: 7px;\n"
-"background-color: #B10303;\n"
-"color: white;\n"
-"font-size: 14px;\n"
-"}\n"
-"\n"
-"QPushButton:hover{\n"
-"	color: black;\n"
-"}")
+        self.searchbtn.setStyleSheet("""
+    QPushButton {
+        border: 1px solid white;
+        border-radius: 5px;
+        background-color: #B10303;
+        color: white;
+        font-family: Arial;
+        font-weight: bold;
+        font-size: 14px;
+        padding: 10px;
+    }
+    QPushButton:hover {
+        background-color: #D11A1A;
+        color: black;
+    }
+    QPushButton:pressed {
+        background-color: #7F0B0B;
+        border: 1px solid #7F0B0B;
+    }
+    QPushButton:focus {
+        outline: none;
+    }
+""")
 
         self.verticalLayout_2.addWidget(self.widget_9)
 
@@ -226,6 +340,31 @@ class ReportWindow(object):
         self.tableWidget = QTableWidget(self.widget_8)
         self.tableWidget.setObjectName(u"tableWidget")
         self.tableWidget.setMaximumSize(QSize(1301, 528))
+        self.tableWidget.setStyleSheet("""
+            QTableWidget {
+                border: 1px solid #B10303;
+                gridline-color: #B10303;
+                background-color: #f5f5f5;
+                font-family: Arial;
+                font-size: 14px;
+            }
+            QTableWidget::item {
+                border-right: 1px solid #B10303;
+                border-bottom: 1px solid #B10303;
+            }
+            QTableWidget::item:selected {
+                background-color: #B10303;
+                color: white;
+            }
+            QHeaderView::section {
+                background-color: #B10303;
+                color: white;
+                padding: 4px;
+                border: 1px solid #B10303;
+                font-size: 15px;
+                font-weight: bold;
+            }
+        """)
 
         self.gridLayout_5.addWidget(self.tableWidget, 0, 0, 1, 1)
 
@@ -246,16 +385,15 @@ class ReportWindow(object):
         QMetaObject.connectSlotsByName(MainWindow)
 
         # Ensure the initial focus is on the regular rate input
-        self.regularrate.setFocus()
-        print("Initial focus set to regularrate")
-        # Set initial focus and tab order
+        self.searchinput.setFocus()
+
+        # Set tab order
         MainWindow.setTabOrder(self.overtimerate, self.regularrate)
         MainWindow.setTabOrder(self.regularrate, self.overtimerate)
 
         # Exclude unnecessary buttons from tab order
         self.startdate.setFocusPolicy(Qt.NoFocus)
         self.enddate.setFocusPolicy(Qt.NoFocus)
-        self.searchinput.setFocusPolicy(Qt.NoFocus)
         self.staffbtn.setFocusPolicy(Qt.NoFocus)
         self.schedbtn.setFocusPolicy(Qt.NoFocus)
         self.reportbtn.setFocusPolicy(Qt.NoFocus)
@@ -282,7 +420,7 @@ class ReportWindow(object):
         self.otlabel.setText(QCoreApplication.translate("MainWindow", u"Overtime Rate/Hr", None))
         self.reglabel.setText(QCoreApplication.translate("MainWindow", u"Regular Rate/Hr", None))
         self.startdatelabel.setText(QCoreApplication.translate("MainWindow", u"From:", None))
-        self.enddatelabel.setText(QCoreApplication.translate("MainWindow", u"To", None))
+        self.enddatelabel.setText(QCoreApplication.translate("MainWindow", u"To:", None))
         self.searchbtn.setText(QCoreApplication.translate("MainWindow", u"Confirm", None))
     # retranslateUi
     
