@@ -1,7 +1,7 @@
 from PyQt5.QtCore import QCoreApplication, QMetaObject, QSize, Qt, QRect
 from PyQt5.QtGui import QPixmap, QFont
 from PyQt5.QtWidgets import *
-import datetime, psycopg2, os
+import datetime, psycopg2, os, sys
 
 class AddStaffSchedule(QMainWindow):
     def __init__(self, stacked_widget, date, previous_index):
@@ -36,7 +36,10 @@ class AddStaffSchedule(QMainWindow):
         self.logo = QLabel(self.widget_3)
         self.logo.setObjectName(u"logo")
         self.logo.setMaximumSize(QSize(200, 100))
-        script_dir = os.path.dirname(os.path.abspath(__file__))
+        if hasattr(sys, '_MEIPASS'):
+            script_dir = sys._MEIPASS
+        else:
+            script_dir = os.path.dirname(os.path.abspath(__file__))
         image_path = os.path.join(script_dir, "image", "Logo1.png")
         self.logo.setPixmap(QPixmap(image_path))
         self.logo.setScaledContents(True)

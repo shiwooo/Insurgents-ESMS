@@ -2,7 +2,7 @@ from PyQt5.QtCore import QCoreApplication, QMetaObject, QRect, QSize, Qt, QDate
 from PyQt5.QtGui import  QCursor,  QPixmap, QDoubleValidator
 from PyQt5.QtWidgets import *
 from decimal import Decimal
-import psycopg2, os, datetime
+import psycopg2, os, datetime, sys
 
 conn = psycopg2.connect(host='localhost', dbname='insurgent_db', user='postgres', password='admin', port='5432')
 cursor = conn.cursor()
@@ -32,7 +32,10 @@ class ReportWindow(object):
         self.logo = QLabel(self.widget_3)
         self.logo.setObjectName(u"logo")
         self.logo.setMaximumSize(QSize(200, 100))
-        script_dir = os.path.dirname(os.path.abspath(__file__))
+        if hasattr(sys, '_MEIPASS'):
+            script_dir = sys._MEIPASS
+        else:
+            script_dir = os.path.dirname(os.path.abspath(__file__))
         image_path = os.path.join(script_dir, "image", "Logo1.png")
         self.logo.setPixmap(QPixmap(image_path))
         self.logo.setScaledContents(True)

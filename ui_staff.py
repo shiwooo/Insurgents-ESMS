@@ -1,7 +1,7 @@
 from PyQt5.QtCore import QCoreApplication, QMetaObject, QRect, QSize, Qt
 from PyQt5.QtGui import QCursor, QPixmap
 from PyQt5.QtWidgets import *
-import psycopg2, datetime, os
+import psycopg2, datetime, os, sys
 
 class StaffTab(object):
     def setupUi(self, MainWindow):
@@ -29,7 +29,10 @@ class StaffTab(object):
         self.logo = QLabel(self.widget_3)
         self.logo.setObjectName("logo")
         self.logo.setMaximumSize(QSize(200, 100))
-        script_dir = os.path.dirname(os.path.abspath(__file__))
+        if hasattr(sys, '_MEIPASS'):
+            script_dir = sys._MEIPASS
+        else:
+            script_dir = os.path.dirname(os.path.abspath(__file__))
         image_path = os.path.join(script_dir, "image", "Logo1.png")
         self.logo.setPixmap(QPixmap(image_path))
         self.logo.setScaledContents(True)

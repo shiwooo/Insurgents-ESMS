@@ -1,7 +1,7 @@
 from PyQt5.QtCore import QCoreApplication, QMetaObject, QRect, Qt
 from PyQt5.QtGui import QCursor, QFont, QPixmap
 from PyQt5.QtWidgets import *
-import os
+import os, sys
 
 class Ui_Form(object):
     def setupUi(self, Form):
@@ -28,7 +28,10 @@ class Ui_Form(object):
         self.label = QLabel(self.widget_3)
         self.label.setObjectName("label")
         self.label.setGeometry(QRect(100, 250, 600, 300))
-        script_dir = os.path.dirname(os.path.abspath(__file__))
+        if hasattr(sys, '_MEIPASS'):
+            script_dir = sys._MEIPASS
+        else:
+            script_dir = os.path.dirname(os.path.abspath(__file__))
         image_path = os.path.join(script_dir, "image", "Logo1.png")
         self.label.setPixmap(QPixmap(image_path))
         self.label.setScaledContents(True)
@@ -196,11 +199,3 @@ class Ui_Form(object):
         self.btnLogin.setText(QCoreApplication.translate("Form", "Login", None))
         self.labelEmail.setText(QCoreApplication.translate("Form", "Username", None))
         self.label_2.setText(QCoreApplication.translate("Form", "Developed by: Jefferson Gonzales, Jhonce Stave Quinio, Kent Vincent De La Concepcion", None))
-if __name__ == "__main__":
-    import sys
-    app = QApplication(sys.argv)
-    Form = QWidget()
-    ui = Ui_Form()
-    ui.setupUi(Form)
-    Form.show()
-    sys.exit(app.exec_())

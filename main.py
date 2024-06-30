@@ -419,8 +419,11 @@ if __name__ == '__main__':
     widget.show()
     widget.setWindowTitle("Insurgents Employee Scheduling Management System")
 
-    script_dir = os.path.dirname(os.path.abspath(__file__))
-    image_path = os.path.join(script_dir, "image", "Logo.ico")
+    if hasattr(sys, '_MEIPASS'):
+        script_dir = sys._MEIPASS
+    else:
+        script_dir = os.path.dirname(os.path.abspath(__file__))
+    image_path = os.path.join(script_dir, "image", "Logo1.png")
     icon = QIcon(image_path)
     widget.setWindowIcon(icon)
 
