@@ -67,7 +67,19 @@ class MainWindow(QWidget):
                     timer_thread.start_timer()
                 else:
                     timer_thread.start()  # Start the timer thread immediately
-                
+
+    def closeEvent(self, event):
+        # Display the message box
+        reply = QMessageBox.question(self, "Warning", 
+                                    "Are you sure you want to close this program? The employee clock-in timer cannot run in the background and it may not track work hours accurately.", 
+                                    QMessageBox.Yes | QMessageBox.No, QMessageBox.No)
+        # Check the user's response
+        if reply == QMessageBox.Yes:
+            event.accept()
+        else:
+            event.ignore()
+
+
     def initUI(self):
         self.setWindowTitle('Main Window')
         self.setGeometry(720, 30, 0, 0)
@@ -81,24 +93,127 @@ class MainWindow(QWidget):
         self.frame3 = QFrame(self)
         self.back_button = QPushButton("Back",self.frame3)
         self.back_button.setCursor(QCursor(Qt.PointingHandCursor))
-        self.back_button.setStyleSheet("color:white;background-color:#B10303; border: 2px solid #B10303; border-radius: 10px;")
+        self.back_button.setStyleSheet("""
+        QPushButton {
+            border: 1px solid white;
+            border-radius: 5px;
+            color: white;
+            font-family: Arial;
+            font-weight: bold;
+            font-size: 14px;
+            background-color: transparent;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+        QPushButton:hover {
+            background-color: #B10303;
+        }
+        QPushButton:pressed {
+            background-color: #7F0B0B;
+            border: 1px solid #7F0B0B;
+        }
+        QPushButton:focus {
+            outline: none;
+        }
+    """)
         self.back_button.hide()
         self.frame4 = QFrame(self)
         self.frame4.setStyleSheet("background-color:#ECE6E6;")
         self.start_button = QPushButton("Start", self.frame4)
         self.pause_button = QPushButton("Clock Out", self.frame4)
         self.resume_button = QPushButton("Clock In", self.frame4)
-        self.start_button.setStyleSheet("color: white; background-color:#B10303")
-        self.pause_button.setStyleSheet("color: white; background-color:#898989")
-        self.resume_button.setStyleSheet("color: white; background-color:#8BC34A")
+        self.start_button.setStyleSheet("""
+        QPushButton {
+            color: white;
+            background-color: #B10303;
+            border: 1px solid #B10303;  /* Add border for better contrast */
+            border-radius: 5px;
+            font-family: Arial;
+            font-weight: bold;
+            font-size: 14px;
+            padding: 8px 16px;  /* Add padding for better button size */
+            outline: none;  /* Remove outline on focus */
+        }
+        QPushButton:hover {
+            background-color: #FF3D3D;  /* Lighten color on hover */
+            border: 1px solid #FF3D3D;
+        }
+        QPushButton:pressed {
+            background-color: #7F0000;  /* Darken color when pressed */
+            border: 1px solid #7F0000;
+        }
+    """)
+
+        self.pause_button.setStyleSheet("""
+        QPushButton {
+            color: white;
+            background-color: #898989;
+            border: 1px solid #898989;  /* Add border for better contrast */
+            border-radius: 5px;
+            font-family: Arial;
+            font-weight: bold;
+            font-size: 14px;
+            padding: 8px 16px;  /* Add padding for better button size */
+            outline: none;  /* Remove outline on focus */
+        }
+        QPushButton:hover {
+            background-color: #B3B3B3;  /* Lighten color on hover */
+            border: 1px solid #B3B3B3;
+        }
+        QPushButton:pressed {
+            background-color: #6E6E6E;  /* Darken color when pressed */
+            border: 1px solid #6E6E6E;
+        }
+    """)
+
+        self.resume_button.setStyleSheet("""
+            QPushButton {
+                color: white;
+                background-color: #8BC34A;
+                border: 1px solid #8BC34A;  /* Add border for better contrast */
+                border-radius: 5px;
+                font-family: Arial;
+                font-weight: bold;
+                font-size: 14px;
+                padding: 8px 16px;  /* Add padding for better button size */
+                outline: none;  /* Remove outline on focus */
+            }
+            QPushButton:hover {
+                background-color: #AED581;  /* Lighten color on hover */
+                border: 1px solid #AED581;
+            }
+            QPushButton:pressed {
+                background-color: #689F38;  /* Darken color when pressed */
+                border: 1px solid #689F38;
+            }
+        """)
+
         self.frame4.hide()
         self.empScrollArea = QScrollArea(self)
         self.frame2 = QFrame()
         self.empLayout = QVBoxLayout(self.frame2)
         self.empScrollArea.setWidgetResizable(True)
         self.empScrollArea.setWidget(self.frame2)
-        label1 = QLabel("INSURGENT KIOSK",self.frame3)
-        label1.setStyleSheet("color:white; font-size:50px;")
+        label1 = QLabel(self.frame3)
+        label1.setText("""
+            <html>
+                <head/>
+                <body>
+                    <p style="color: white; font-size: 30px; font-weight: bold; text-align: center;">
+                        <span style="color: rgb(254, 2, 1);">I</span>
+                        <span>N S</span>
+                        <span style="color: rgb(254, 2, 1);">U</span>
+                        <span>R G</span>
+                        <span style="color: rgb(254, 2, 1);">E</span>
+                        <span>N T</span>
+                        <span style="color: rgb(254, 2, 1);">S</span>
+                        <span>&nbsp;&nbsp;K I</span>
+                        <span style="color: rgb(254, 2, 1);">O</span>
+                        <span>S K</span>
+                    </p>
+                </body>
+            </html>
+        """)
+
         frame3_layout = QVBoxLayout(self.frame3)
         frame3_layout.addWidget(label1, alignment=Qt.AlignmentFlag.AlignCenter)
         self.frame3.setLayout(frame3_layout)
@@ -113,12 +228,14 @@ class MainWindow(QWidget):
         self.setFrame2()
         self.clock_label = QLabel(self.frame1)
         self.date_label = QLabel(datetime.now().strftime("%Y-%m-%d"), self.frame1)  # Add date label
-        self.clock_label.setStyleSheet("font-size: 18px; color: red; border: none; font-weight: bold;")
-        self.date_label.setStyleSheet("font-size: 16px; color: red; border: none; font-weight: bold;")
-        self.clock_label.move(20, 20)
-        self.date_label.move(20, 50)  # Adjust position of the date label
+        self.clock_label.setStyleSheet("font-size: 20px; color: black; border: none; font-weight: bold;")
+        self.date_label.setStyleSheet("font-size: 20px; color: black; border: none; font-weight: bold;")
         self.name_label = QLabel("Name", self.frame4)
-        self.name_label.setStyleSheet("color: black; font-size: 16px;")
+        self.name_label.setStyleSheet("""
+        color: black;
+        font-size: 24px; 
+        font-weight: bold; 
+    """)
         self.name_label.move(10, 20)
         self.name_label.setFixedWidth(200)
         self.timer = QTimer(self)
@@ -142,7 +259,7 @@ class MainWindow(QWidget):
         self.frame1.setFixedWidth(frame1W)
         self.frame3.setFixedWidth(int(self.width()*1))
         self.frame3.setFixedHeight(int(self.height()*.20))
-        self.back_button.setGeometry(int(self.frame3.width()*.82),int(self.frame3.height()*.10),int(self.frame3.width()*.15),int(self.frame3.height()*.30))
+        self.back_button.setGeometry(int(self.frame3.width() * 0.84), int(self.frame3.height() * 0.06), int(self.frame3.width() * 0.15), int(self.frame3.height() * 0.30))
         self.empScrollArea.setGeometry(0,0,int(self.width()),int(self.height()))
         total_height = (len(empF)+2) * int(self.empScrollArea.height() * 0.10)
 
@@ -156,8 +273,8 @@ class MainWindow(QWidget):
             empF[a].setGeometry(int(self.empScrollArea.width()*.10),int(self.empScrollArea.height()* y),int(self.empScrollArea.width()*.60),int(self.empScrollArea.height()*.10))
             y += .11
         stra = str(int(self.frame1.width()*.125))
-        self.clock_label.setStyleSheet("font-size: "+stra+"px; color: red; border: none; font-weight: bold;")
-        self.date_label.setStyleSheet("font-size: "+stra+"px; color: red; border: none; font-weight: bold;")
+        self.clock_label.setStyleSheet("font-size: "+stra+"px; color: black; border: none; font-weight: bold;")
+        self.date_label.setStyleSheet("font-size: "+stra+"px; color: black; border: none; font-weight: bold;")
         self.clock_label.setFixedSize(int(self.frame1.width()*.8),int(self.frame1.height()*.10)) 
         self.clock_label.move(int(self.frame1.width()*.10),0)
         self.date_label.setFixedSize(int(self.frame1.width()*.79),int(self.frame1.height()*.10))
@@ -176,29 +293,31 @@ class MainWindow(QWidget):
                         """)
         employee = cursor.fetchall()
         
-        
-        for emp_id, eName,timerz,status,s_id in employee:
+        for emp_id, eName, timerz, status, s_id in employee:
             empFrame = QFrame(self.frame2)
             empFrame.setCursor(QCursor(Qt.PointingHandCursor))
             label = QLabel(eName, empFrame)
             
             empFrame.setStyleSheet("background-color: #D24242; border: 2px solid black; border-radius: 10px;") 
-            label.setStyleSheet(" border: none; color: white;")
+            label.setStyleSheet("border: none; color: white; font-size: 24px;") 
             empF.append(empFrame)
             label.move(20,20)
             empFrame.mousePressEvent = lambda event, emp_id=emp_id, name=s_id,asd = eName: self.on_empFrame_clicked(emp_id,name,asd)
 
         self.timer_labels = {}  # Dictionary to store timer labels for each employee
         # Create timer labels for each employee
+        
         for emp_id, eName,timerz,status,s_id in employee:
             timer_label = QLabel("00:00:00", self.frame4)
-            timer_label.setStyleSheet("color: red;")
+            timer_label.setStyleSheet("color: red; font-size: 32px; font-weight: bold; qproperty-alignment: 'AlignCenter';")
             timer_label.move(190,50)
             self.timer_labels[s_id] = timer_label
             timer_label.hide()
-        self.start_button.move(100, 100)
-        self.pause_button.move(180, 100)
-        self.resume_button.move(260, 100)
+
+        self.start_button.move(100, 150)
+        self.pause_button.move(180, 150)
+        self.resume_button.move(260, 150)
+
         # Connect buttons to functions
         self.start_button.clicked.connect(self.start_button_clicked)
         self.pause_button.clicked.connect(self.pause_button_clicked)
@@ -392,7 +511,23 @@ class MainWindow(QWidget):
                 break
 
 if __name__ == '__main__':
+    import sys
+    from PyQt5.QtWidgets import QApplication
+    from kiosk import MainWindow
+    
     app = QApplication(sys.argv)
     window = MainWindow()
     window.show()
-    sys.exit(app.exec())
+    window.setWindowTitle("Insurgents Employee Kiosk")
+
+    import os
+    if hasattr(sys, '_MEIPASS'):
+        script_dir = sys._MEIPASS
+    else:
+        script_dir = os.path.dirname(os.path.abspath(__file__))
+    image_path = os.path.join(script_dir, "image", "Logo.ico")
+    from PyQt5.QtGui import QIcon
+    icon = QIcon(image_path)
+    window.setWindowIcon(icon)
+    
+    sys.exit(app.exec_())

@@ -423,7 +423,7 @@ if __name__ == '__main__':
         script_dir = sys._MEIPASS
     else:
         script_dir = os.path.dirname(os.path.abspath(__file__))
-    image_path = os.path.join(script_dir, "image", "Logo1.png")
+    image_path = os.path.join(script_dir, "image", "Logo.ico")
     icon = QIcon(image_path)
     widget.setWindowIcon(icon)
 
