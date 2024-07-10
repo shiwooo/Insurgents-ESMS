@@ -271,9 +271,8 @@ class AddStaffDialog(QDialog):
         "padding: 4px;")
         self.dhinput.setDate(QDate.currentDate())
         self.dhinput.setDisplayFormat("MM/dd/yy")
+        self.dhinput.setMaximumDate(QDate.currentDate())
         self.verticalLayout_8.addWidget(self.dhinput)
-
-
 
         self.horizontalLayout_5.addWidget(self.widget_18)
 
