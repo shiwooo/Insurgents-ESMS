@@ -266,11 +266,13 @@ class AddStaffDialog(QDialog):
         self.dhinput = QDateEdit(self.widget_18)
         self.dhinput.setObjectName("dhinput")
         self.dhinput.setStyleSheet("background-color: rgb(255, 255, 255);"
-"border: 1px solid  #B10303;"
-"border-radius: 5px;"
-"padding: 4px;")
+        "border: 1px solid  #B10303;"
+        "border-radius: 5px;"
+        "padding: 4px;")
         self.dhinput.setDate(QDate.currentDate())
+        self.dhinput.setDisplayFormat("MM/dd/yy")
         self.verticalLayout_8.addWidget(self.dhinput)
+
 
 
         self.horizontalLayout_5.addWidget(self.widget_18)
@@ -397,13 +399,13 @@ class AddStaffDialog(QDialog):
     
     def add_employee(self):
         if not self.fnameinput.text():
-            QMessageBox.warning(self, "Validation Error", "Firstname is required.")
+            QMessageBox.warning(self, "Validation Error", "First Name is required.")
             return
         if not self.lnameinput.text():
-            QMessageBox.warning(self, "Validation Error", "Lastname is required.")
+            QMessageBox.warning(self, "Validation Error", "Last Name is required.")
             return
         if not self.phoneinput.hasAcceptableInput():
-            QMessageBox.warning(self, "Validation Error", "Phone number is required.")
+            QMessageBox.warning(self, "Validation Error", "Phone number is not valid.")
             return
         if not self.emailinput.hasAcceptableInput():
             QMessageBox.warning(self, "Validation Error", "Email is not valid.")
