@@ -1,4 +1,4 @@
-from PyQt5.QtCore import QCoreApplication, QMetaObject, QObject, Qt, pyqtSignal, QRegExp, QRegularExpression, QSize
+from PyQt5.QtCore import QCoreApplication, QMetaObject, QObject, Qt, pyqtSignal, QRegExp, QRegularExpression, QSize, QDate
 from PyQt5.QtGui import QCursor, QFont, QRegExpValidator, QRegularExpressionValidator
 from PyQt5.QtWidgets import *
 import psycopg2
@@ -273,7 +273,8 @@ class UpdateStaffDialog(QObject):
 "border: 1px solid  #B10303;"
 "border-radius: 5px;"
 "padding: 4px;")
-
+        self.hdinput.setDisplayFormat("MM/dd/yy")
+        self.hdinput.setMaximumDate(QDate.currentDate())
         self.verticalLayout_8.addWidget(self.hdinput)
 
 
